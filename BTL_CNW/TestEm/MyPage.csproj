@@ -147,6 +147,9 @@
     <Content Include="Contents\images\place-2.jpg" />
     <Content Include="Contents\images\place-3.jpg" />
     <Content Include="Contents\images\place-4.jpg" />
+    <Content Include="Contents\images\promo-1.jpg" />
+    <Content Include="Contents\images\promo-2.jpg" />
+    <Content Include="Contents\images\promo-3.jpg" />
     <Content Include="Contents\js\aos.js" />
     <Content Include="Contents\js\bootstrap-datepicker.js" />
     <Content Include="Contents\js\bootstrap.min.js" />
