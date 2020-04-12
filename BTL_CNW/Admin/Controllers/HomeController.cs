@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace TestEm.Controllers
+namespace Admin.Controllers
 {
-    public class AdminController : Controller
+    public class HomeController : Controller
     {
-        // GET: Admin
+        // GET: Home
         public ActionResult Index()
         {
             return View();
