@@ -13529,3 +13529,59 @@ textarea.form-control {
     }
 
 /*mycode*/
+.row-productPage {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: block;
+}
+
+.section-product {
+    margin-top: 30px;
+    background-color: lemonchiffon;
+    height: 1000px
+}
+
+.contain-tab-procduct {
+    border-radius: 10px;
+    margin-top: 15px;
+    background-color: lightskyblue;
+    height: 40px;
+}
+
+.contain-tab-procduct p {
+    font-size: 20px;
+    padding-top: 9px;
+    padding-left: 15px;
+}
+
+.search-product {
+    border: none;
+    border-radius: 10px;
+    background-color: lightskyblue;
+    padding-top: 9px;
+    padding-left: 15px;
+    font-size: 20px;
+    
+}
+
+.contain-img-product {
+    height: 200px;
+    background-color: lightcoral;
+    border-radius: 40px;
+}
+
+.col-productPage.span_1_of_3,
+.col-productPage.span_2_of_3,
+.col-productPage.span_1_of_2 {
+    float: left;
+    padding:5px;
+    margin:0px;
+}
+
+.col-productPage.span_1_of_2 {
+    margin-top: 20px;
+}
+
+.product-short-infor {
+    text-align: center;
+}
