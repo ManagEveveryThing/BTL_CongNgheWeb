@@ -13536,9 +13536,10 @@ textarea.form-control {
 }
 
 .section-product {
-    
+    display:block;
     background-color: lemonchiffon;
-    height: 1000px
+    min-height:800px;
+    max-height: 2400px;
 }
 
 .contain-tab-procduct {
@@ -13585,4 +13586,14 @@ textarea.form-control {
 
 .product-short-infor {
     text-align: center;
+}
+
+@media only screen and (max-width:850px){
+
+    .col-productPage {
+        width: 100%;
+    }
+    .section-product{
+        height: 2400px;
+    }
 }

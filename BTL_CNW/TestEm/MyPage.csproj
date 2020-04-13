@@ -192,6 +192,7 @@
     <Content Include="Contents\js\owl.carousel.min.js" />
     <Content Include="Contents\js\popper.min.js" />
     <Content Include="Contents\js\range.js" />
+    <Content Include="Contents\js\script.js" />
     <Content Include="Contents\js\scrollax.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
