@@ -12193,7 +12193,7 @@ textarea.form-control {
 .ftco-footer {
     font-size: 16px;
     background: #201e25;
-    padding: 7em 0;
+    padding-top:2cm;
     z-index: 0;
 }
 
@@ -13530,15 +13530,13 @@ textarea.form-control {
 
 /*mycode*/
 .row-productPage {
-    max-width: 1140px;
+    max-width: 1600px;
     margin: 0 auto;
     display: block;
 }
 
 .section-product {
-    
-    background-color: lemonchiffon;
-    height: 1000px
+    height: 810px
 }
 
 .contain-tab-procduct {
@@ -13571,12 +13569,17 @@ textarea.form-control {
     border-radius: 40px;
 }
 
+.col-productPage.span_1_of_4 {
+    float: left;
+    padding: 20px;
+    margin: 0px;
+}
 .col-productPage.span_1_of_3,
 .col-productPage.span_2_of_3,
 .col-productPage.span_1_of_2 {
     float: left;
-    padding:5px;
-    margin:0px;
+    padding: 10px;
+    margin: 0px;
 }
 
 .col-productPage.span_1_of_2 {
