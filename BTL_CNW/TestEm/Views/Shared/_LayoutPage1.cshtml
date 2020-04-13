@@ -53,20 +53,20 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">@Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })</li>
                         <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { @class = "nav-link" })</li>
-                        <li class="nav-item dropdown"> 
-                            @Html.ActionLink("Service", "Index", "Home", new { @class = "nav-link" })
-                        <ul class="dropdown-divider">
+                        <li class="nav-item ">  
+                            @Html.ActionLink("Service", "Service", "Home", new { @class = "nav-link" }) 
+                        @*<ul class="dropdown-divider">
                             <li class="dropdown-menu">
                                 @Html.ActionLink("Transport", "Index", "Home", new { @class = "dropdown-item" })
                                 @Html.ActionLink("Accommodation", "Index", "Home", new { @class = "dropdown-item" })
                                 @Html.ActionLink("Tour", "Tour", "Home", new { @class = "dropdown-item" })
                             </li>
-                        </ul>
+                        </ul>*@
                     </li>
                     <li class="nav-item">@Html.ActionLink("Destination", "Destination", "Home", new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Blog", "Blog", "Home", new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link" })</li>
-                    <li class="nav-item cta">@Html.ActionLink("Book Now", "Booking", "Home", new { @class = "nav-link" })</li>
+                    <li class="nav-item cta">@Html.ActionLink("Book Now", "Index", "Home", new { @class = "nav-link" })</li>
 
                 </ul>
             </div>

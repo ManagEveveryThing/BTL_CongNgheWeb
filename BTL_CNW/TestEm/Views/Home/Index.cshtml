@@ -21,80 +21,98 @@
     </div>
 </div>
 
-<section class="ftco-section ftco-no-pb ftco-no-pt">
+<div class="ftco-section-search">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="search-wrap-1 ftco-animate p-4">
-                    <form action="#" class="search-property-1">
-                        <div class="row">
-                            <div class="col-lg align-items-end">
-                                <div class="form-group">
-                                    <label for="#">Destination</label>
-                                    <div class="form-field">
-                                        <div class="icon"><span class="ion-ios-search"></span></div>
-                                        <input type="text" class="form-control" placeholder="Search place">
+            <div class="col-md-12 tabulation-search">
+                <div class="element-animate">
+                    <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link p-3 active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><span>01</span> Flight</a>
+                        <a class="nav-link p-3" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><span>02</span> Hotel</a>
+                        <a class="nav-link p-3" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><span>03</span> Car Rent</a>
+                    </div>
+                </div>
+
+                <div class="tab-content py-5" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <div class="block-17">
+                            <form action="" method="post" class="d-block d-lg-flex">
+                                <div class="fields d-block d-lg-flex">
+
+                                    <div class="textfield-search one-third"><input type="text" class="form-control" placeholder="Search Location"></div>
+
+                                    <div class="check-in one-third"><input type="text" id="checkin_date" class="form-control" placeholder="Check-in date"></div>
+
+                                    <div class="check-out one-third"><input type="text" id="checkout_date" class="form-control" placeholder="Check-out date"></div>
+                                    <div class="select-wrap one-third">
+                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                        <select name="" id="" class="form-control">
+                                            <option value="">Guest</option>
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                            <option value="">3</option>
+                                            <option value="">4+</option>
+                                        </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg align-items-end">
-                                <div class="form-group">
-                                    <label for="#">Check-in date</label>
-                                    <div class="form-field">
-                                        <div class="icon"><span class="ion-ios-calendar"></span></div>
-                                        <input type="text" class="form-control checkin_date" placeholder="Check In Date">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg align-items-end">
-                                <div class="form-group">
-                                    <label for="#">Check-out date</label>
-                                    <div class="form-field">
-                                        <div class="icon"><span class="ion-ios-calendar"></span></div>
-                                        <input type="text" class="form-control checkout_date" placeholder="Check Out Date">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg align-items-end">
-                                <div class="form-group">
-                                    <label for="#">Price Limit</label>
-                                    <div class="form-field">
-                                        <div class="select-wrap">
-                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="" class="form-control">
-                                                <option class="colorprice" value="">$1,000</option>
-                                                <option class="colorprice" value="">$10,000</option>
-                                                <option class="colorprice" value="">$50,000</option>
-                                                <option class="colorprice" value="">$100,000</option>
-                                                <option class="colorprice" value="">$200,000</option>
-                                                <option class="colorprice" value="">$300,000</option>
-                                                <option class="colorprice" value="">$400,000</option>
-                                                <option class="colorprice" value="">$500,000</option>
-                                                <option class="colorprice" value="">$600,000</option>
-                                                <option class="colorprice" value="">$700,000</option>
-                                                <option class="colorprice" value="">$800,000</option>
-                                                <option class="colorprice" value="">$900,000</option>
-                                                <option class="colorprice" value="">$1,000,000</option>
-                                                <option class="colorprice" value="">$2,000,000</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg align-self-end">
-                                <div class="form-group">
-                                    <div class="form-field">
-                                        <input type="submit" value="Search" class="form-control btn btn-primary">
-                                    </div>
-                                </div>
-                            </div>
+                                <input type="submit" class="search-submit btn btn-primary" value="Find Flights">
+                            </form>
                         </div>
-                    </form>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <div class="block-17">
+                            <form action="" method="post" class="d-block d-lg-flex">
+                                <div class="fields d-block d-lg-flex">
+                                    <div class="textfield-search one-third"><input type="text" class="form-control" placeholder="Search Hotel"></div>
+
+                                    <div class="check-in one-third"><input type="text" id="checkin_date" class="form-control" placeholder="Check-in date"></div>
+
+                                    <div class="check-out one-third"><input type="text" id="checkout_date" class="form-control" placeholder="Check-out date"></div>
+                                    <div class="select-wrap one-third">
+                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                        <select name="" id="" class="form-control">
+                                            <option value="">Guest</option>
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                            <option value="">3</option>
+                                            <option value="">4+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <input type="submit" class="search-submit btn btn-primary" value="Find Hotels">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <div class="block-17">
+                            <form action="" method="post" class="d-block d-lg-flex">
+                                <div class="fields d-block d-lg-flex">
+                                    <div class="textfield-search one-third"><input type="text" class="form-control" placeholder="Search Location"></div>
+
+                                    <div class="check-in one-third"><input type="text" id="start_date" class="form-control" placeholder="Start date"></div>
+
+                                    <div class="check-out one-third"><input type="text" id="return_date" class="form-control" placeholder="Return date"></div>
+                                    <div class="select-wrap one-third">
+                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                        <select name="" id="" class="form-control">
+                                            <option value="">Guest</option>
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                            <option value="">3</option>
+                                            <option value="">4+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <input type="submit" class="search-submit btn btn-primary" value="Find Car">
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <section class="ftco-section services-section bg-light">
     <div class="container">
