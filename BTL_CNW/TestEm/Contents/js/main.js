@@ -293,13 +293,14 @@
   });
 
 
-  $('.checkin_date, .checkout_date').datepicker({
+  $('.checkin_datez, .checkout_datez').datepicker({
 	  'format': 'm/d/yyyy',
 	  'autoclose': true
 	});
-
-
-
+	$('#checkin_date, #checkout_date, #start_date, #return_date').datepicker({
+		'format': 'm/d/yyyy',
+		'autoclose': true
+	});
 
 })(jQuery);
 

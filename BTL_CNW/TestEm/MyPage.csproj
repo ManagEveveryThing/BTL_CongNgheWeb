@@ -210,6 +210,7 @@
     <Content Include="Contents\js\jquery.magnific-popup.min.js" />
     <Content Include="Contents\js\jquery.min.js" />
     <Content Include="Contents\js\jquery.stellar.min.js" />
+    <Content Include="Contents\js\jquery.timepicker.min.js" />
     <Content Include="Contents\js\jquery.waypoints.min.js" />
     <Content Include="Contents\js\main.js" />
     <Content Include="Contents\js\owl.carousel.min.js" />
