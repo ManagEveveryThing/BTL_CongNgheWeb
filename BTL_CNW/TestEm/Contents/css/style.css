@@ -12193,7 +12193,7 @@ textarea.form-control {
 .ftco-footer {
     font-size: 16px;
     background: #201e25;
-    padding: 7em 0;
+    padding-top: 2cm;
     z-index: 0;
 }
 
@@ -13530,22 +13530,13 @@ textarea.form-control {
 
 /*mycode*/
 .row-productPage {
-    max-width: 1140px;
+    max-width: 1600px;
     margin: 0 auto;
     display: block;
 }
 
 .section-product {
-<<<<<<< HEAD
-    
-    background-color: lemonchiffon;
-    height: 1000px
-=======
-    display:block;
-    background-color: lemonchiffon;
-    min-height:800px;
-    max-height: 2400px;
->>>>>>> parent of 5ea8c19... Merge branch 'master' of https://github.com/ManagEveveryThing/BTL_CongNgheWeb
+    height: 810px
 }
 
 .contain-tab-procduct {
@@ -13555,11 +13546,11 @@ textarea.form-control {
     height: 40px;
 }
 
-.contain-tab-procduct p {
-    font-size: 20px;
-    padding-top: 9px;
-    padding-left: 15px;
-}
+    .contain-tab-procduct p {
+        font-size: 20px;
+        padding-top: 9px;
+        padding-left: 15px;
+    }
 
 .search-product {
     border: none;
@@ -13568,7 +13559,8 @@ textarea.form-control {
     padding-top: 9px;
     padding-left: 15px;
     font-size: 20px;
-    
+    height: 40px;
+    width: 360px;
 }
 
 .contain-img-product {
@@ -13577,12 +13569,18 @@ textarea.form-control {
     border-radius: 40px;
 }
 
+.col-productPage.span_1_of_4 {
+    float: left;
+    padding: 20px;
+    margin: 0px;
+}
+
 .col-productPage.span_1_of_3,
 .col-productPage.span_2_of_3,
 .col-productPage.span_1_of_2 {
     float: left;
-    padding:5px;
-    margin:0px;
+    padding: 10px;
+    margin: 0px;
 }
 
 .col-productPage.span_1_of_2 {
@@ -13591,17 +13589,4 @@ textarea.form-control {
 
 .product-short-infor {
     text-align: center;
-<<<<<<< HEAD
-=======
-}
-
-@media only screen and (max-width:850px){
-
-    .col-productPage {
-        width: 100%;
-    }
-    .section-product{
-        height: 2400px;
-    }
->>>>>>> parent of 5ea8c19... Merge branch 'master' of https://github.com/ManagEveveryThing/BTL_CongNgheWeb
 }
