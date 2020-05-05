@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Admin.Models;
+using Admin.Models.DB;
 
 namespace Admin.Controllers
 {  
@@ -18,6 +18,8 @@ namespace Admin.Controllers
         public ActionResult Table()
         {
             var model = context.DestinationReviews.ToList();
+            var tableName = context.TenCacBangs.ToList();
+            ViewBag.tableName = tableName;
             return View(model);
         }
         public ActionResult Login()

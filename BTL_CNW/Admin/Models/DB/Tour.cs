@@ -1,4 +1,4 @@
-namespace Admin.Models
+namespace Admin.Models.DB
 {
     using System;
     using System.Collections.Generic;
@@ -6,30 +6,30 @@ namespace Admin.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("HomeStay")]
-    public partial class HomeStay
+    [Table("Tour")]
+    public partial class Tour
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HomeStay()
+        public Tour()
         {
-            DSKSCanTTs = new HashSet<DSKSCanTT>();
-            DSKSTheoTrips = new HashSet<DSKSTheoTrip>();
-            DSKSTrongWLs = new HashSet<DSKSTrongWL>();
+            DSTourCanTTs = new HashSet<DSTourCanTT>();
+            DSTourTrongWLs = new HashSet<DSTourTrongWL>();
+            DSTripTheoTours = new HashSet<DSTripTheoTour>();
         }
 
         [Key]
         [StringLength(10)]
-        public string maKS { get; set; }
-
-        [Required]
-        [StringLength(10)]
-        public string maDD { get; set; }
+        public string maTour { get; set; }
 
         [StringLength(50)]
-        public string tenKS { get; set; }
+        public string tenTour { get; set; }
 
-        [StringLength(10)]
-        public string phoneNum { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? dayStart { get; set; }
+
+        public int? soLuongMax { get; set; }
+
+        public int? soDem { get; set; }
 
         [StringLength(100)]
         public string pic { get; set; }
@@ -38,14 +38,12 @@ namespace Admin.Models
         public string note { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DSKSCanTT> DSKSCanTTs { get; set; }
+        public virtual ICollection<DSTourCanTT> DSTourCanTTs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DSKSTheoTrip> DSKSTheoTrips { get; set; }
+        public virtual ICollection<DSTourTrongWL> DSTourTrongWLs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DSKSTrongWL> DSKSTrongWLs { get; set; }
-
-        public virtual TourDestination TourDestination { get; set; }
+        public virtual ICollection<DSTripTheoTour> DSTripTheoTours { get; set; }
     }
 }

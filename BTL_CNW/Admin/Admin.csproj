@@ -313,27 +313,27 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Blog.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\DBcontextTour.cs" />
-    <Compile Include="Models\DestinationReview.cs" />
-    <Compile Include="Models\DSDatXe.cs" />
-    <Compile Include="Models\DSKSCanTT.cs" />
-    <Compile Include="Models\DSKSTheoTrip.cs" />
-    <Compile Include="Models\DSKSTrongWL.cs" />
-    <Compile Include="Models\DSTourCanTT.cs" />
-    <Compile Include="Models\DSTourTrongWL.cs" />
-    <Compile Include="Models\DSTripTheoTour.cs" />
-    <Compile Include="Models\ElecBill.cs" />
-    <Compile Include="Models\HomeStay.cs" />
-    <Compile Include="Models\Nation.cs" />
-    <Compile Include="Models\Province.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
-    <Compile Include="Models\Taxi.cs" />
-    <Compile Include="Models\Tour.cs" />
-    <Compile Include="Models\TourDestination.cs" />
-    <Compile Include="Models\Trip.cs" />
-    <Compile Include="Models\WishList.cs" />
+    <Compile Include="Models\DB\Blog.cs" />
+    <Compile Include="Models\DB\Customer.cs" />
+    <Compile Include="Models\DB\DBcontextTour.cs" />
+    <Compile Include="Models\DB\DestinationReview.cs" />
+    <Compile Include="Models\DB\DSDatXe.cs" />
+    <Compile Include="Models\DB\DSKSCanTT.cs" />
+    <Compile Include="Models\DB\DSKSTheoTrip.cs" />
+    <Compile Include="Models\DB\DSKSTrongWL.cs" />
+    <Compile Include="Models\DB\DSTourCanTT.cs" />
+    <Compile Include="Models\DB\DSTourTrongWL.cs" />
+    <Compile Include="Models\DB\DSTripTheoTour.cs" />
+    <Compile Include="Models\DB\ElecBill.cs" />
+    <Compile Include="Models\DB\HomeStay.cs" />
+    <Compile Include="Models\DB\Nation.cs" />
+    <Compile Include="Models\DB\Province.cs" />
+    <Compile Include="Models\DB\Taxi.cs" />
+    <Compile Include="Models\DB\TenCacBang.cs" />
+    <Compile Include="Models\DB\Tour.cs" />
+    <Compile Include="Models\DB\TourDestination.cs" />
+    <Compile Include="Models\DB\Trip.cs" />
+    <Compile Include="Models\DB\WishList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

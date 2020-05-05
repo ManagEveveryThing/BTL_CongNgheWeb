@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutPage_admin.cshtml";
 }
 
-@using Admin.Models;
+@using Admin.Models.DB;
 
 @model List<DestinationReview>
 
@@ -339,20 +339,22 @@
                         <div class="table-data__tool-left">
                             <div class="rs-select2--light rs-select2--md">
                                 <select class="js-select2 select2-hidden-accessible" name="property" tabindex="-1" aria-hidden="true">
-                                    <option selected="selected">All Properties</option>
-                                    <option value="">Option 1</option>
-                                    <option value="">Option 2</option>
+                                    <option selected="selected">Tables</option>
+                                    @foreach (TenCacBang it in ViewBag.tableName)
+                                    {
+                                        <option value="">@it.tenCacBang1</option>
+                                    }
                                 </select>
                                 <div class="dropDownSelect2"></div>
                             </div>
-                            <div class="rs-select2--light rs-select2--sm">
+                            @*<div class="rs-select2--light rs-select2--sm">
                                 <select class="js-select2 select2-hidden-accessible" name="time" tabindex="-1" aria-hidden="true">
                                     <option selected="selected">Today</option>
                                     <option value="">3 Days</option>
                                     <option value="">1 Week</option>
                                 </select>
                                 <div class="dropDownSelect2"></div>
-                            </div>
+                            </div>*@
                             <button class="au-btn-filter">
                                 <i class="zmdi zmdi-filter-list"></i>filters
                             </button>

@@ -1,4 +1,4 @@
-namespace Admin.Models
+namespace Admin.Models.DB
 {
     using System;
     using System.Collections.Generic;
@@ -6,30 +6,30 @@ namespace Admin.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Tour")]
-    public partial class Tour
+    [Table("Trip")]
+    public partial class Trip
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tour()
+        public Trip()
         {
-            DSTourCanTTs = new HashSet<DSTourCanTT>();
-            DSTourTrongWLs = new HashSet<DSTourTrongWL>();
+            DSKSTheoTrips = new HashSet<DSKSTheoTrip>();
             DSTripTheoTours = new HashSet<DSTripTheoTour>();
         }
 
         [Key]
         [StringLength(10)]
-        public string maTour { get; set; }
+        public string maCD { get; set; }
 
-        [StringLength(50)]
-        public string tenTour { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string maDDStart { get; set; }
+
+        [Required]
+        [StringLength(10)]
+        public string maDDEnd { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? dayStart { get; set; }
-
-        public int? soLuongMax { get; set; }
-
-        public int? soDem { get; set; }
+        public DateTime? dayStrat { get; set; }
 
         [StringLength(100)]
         public string pic { get; set; }
@@ -38,12 +38,13 @@ namespace Admin.Models
         public string note { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DSTourCanTT> DSTourCanTTs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DSTourTrongWL> DSTourTrongWLs { get; set; }
+        public virtual ICollection<DSKSTheoTrip> DSKSTheoTrips { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DSTripTheoTour> DSTripTheoTours { get; set; }
+
+        public virtual TourDestination TourDestination { get; set; }
+
+        public virtual TourDestination TourDestination1 { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-namespace Admin.Models
+namespace Admin.Models.DB
 {
     using System;
     using System.Collections.Generic;
@@ -6,30 +6,30 @@ namespace Admin.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Trip")]
-    public partial class Trip
+    [Table("HomeStay")]
+    public partial class HomeStay
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Trip()
+        public HomeStay()
         {
+            DSKSCanTTs = new HashSet<DSKSCanTT>();
             DSKSTheoTrips = new HashSet<DSKSTheoTrip>();
-            DSTripTheoTours = new HashSet<DSTripTheoTour>();
+            DSKSTrongWLs = new HashSet<DSKSTrongWL>();
         }
 
         [Key]
         [StringLength(10)]
-        public string maCD { get; set; }
+        public string maKS { get; set; }
 
         [Required]
         [StringLength(10)]
-        public string maDDStart { get; set; }
+        public string maDD { get; set; }
 
-        [Required]
+        [StringLength(50)]
+        public string tenKS { get; set; }
+
         [StringLength(10)]
-        public string maDDEnd { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? dayStrat { get; set; }
+        public string phoneNum { get; set; }
 
         [StringLength(100)]
         public string pic { get; set; }
@@ -38,13 +38,14 @@ namespace Admin.Models
         public string note { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DSKSCanTT> DSKSCanTTs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DSKSTheoTrip> DSKSTheoTrips { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DSTripTheoTour> DSTripTheoTours { get; set; }
+        public virtual ICollection<DSKSTrongWL> DSKSTrongWLs { get; set; }
 
         public virtual TourDestination TourDestination { get; set; }
-
-        public virtual TourDestination TourDestination1 { get; set; }
     }
 }

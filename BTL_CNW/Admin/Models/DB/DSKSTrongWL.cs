@@ -1,4 +1,4 @@
-namespace Admin.Models
+namespace Admin.Models.DB
 {
     using System;
     using System.Collections.Generic;
@@ -6,26 +6,27 @@ namespace Admin.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("DSDatXe")]
-    public partial class DSDatXe
+    [Table("DSKSTrongWL")]
+    public partial class DSKSTrongWL
     {
         [Key]
         [Column(Order = 0)]
         [StringLength(10)]
-        public string maHD { get; set; }
+        public string maKS { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(15)]
-        public string bienSo { get; set; }
+        [StringLength(10)]
+        public string maWL { get; set; }
 
-        public double? cost { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? ngayAdd { get; set; }
 
         [StringLength(100)]
         public string note { get; set; }
 
-        public virtual ElecBill ElecBill { get; set; }
+        public virtual HomeStay HomeStay { get; set; }
 
-        public virtual Taxi Taxi { get; set; }
+        public virtual WishList WishList { get; set; }
     }
 }

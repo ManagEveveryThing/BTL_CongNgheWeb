@@ -1,4 +1,4 @@
-namespace Admin.Models
+namespace Admin.Models.DB
 {
     using System;
     using System.Collections.Generic;
@@ -6,13 +6,13 @@ namespace Admin.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("DSTourCanTT")]
-    public partial class DSTourCanTT
+    [Table("DSKSCanTT")]
+    public partial class DSKSCanTT
     {
         [Key]
         [Column(Order = 0)]
         [StringLength(10)]
-        public string maTour { get; set; }
+        public string maKS { get; set; }
 
         [Key]
         [Column(Order = 1)]
@@ -26,6 +26,6 @@ namespace Admin.Models
 
         public virtual ElecBill ElecBill { get; set; }
 
-        public virtual Tour Tour { get; set; }
+        public virtual HomeStay HomeStay { get; set; }
     }
 }

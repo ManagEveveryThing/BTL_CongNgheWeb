@@ -1,4 +1,4 @@
-namespace Admin.Models
+namespace Admin.Models.DB
 {
     using System;
     using System.Data.Entity;
@@ -25,8 +25,8 @@ namespace Admin.Models
         public virtual DbSet<HomeStay> HomeStays { get; set; }
         public virtual DbSet<Nation> Nations { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Taxi> Taxis { get; set; }
+        public virtual DbSet<TenCacBang> TenCacBangs { get; set; }
         public virtual DbSet<Tour> Tours { get; set; }
         public virtual DbSet<TourDestination> TourDestinations { get; set; }
         public virtual DbSet<Trip> Trips { get; set; }

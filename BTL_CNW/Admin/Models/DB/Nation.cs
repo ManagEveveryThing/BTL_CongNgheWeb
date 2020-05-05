@@ -1,4 +1,4 @@
-namespace Admin.Models
+namespace Admin.Models.DB
 {
     using System;
     using System.Collections.Generic;
@@ -6,25 +6,21 @@ namespace Admin.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Province")]
-    public partial class Province
+    [Table("Nation")]
+    public partial class Nation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Province()
+        public Nation()
         {
-            TourDestinations = new HashSet<TourDestination>();
+            Provinces = new HashSet<Province>();
         }
 
         [Key]
         [StringLength(10)]
-        public string maTinh { get; set; }
-
-        [Required]
-        [StringLength(10)]
         public string maQG { get; set; }
 
         [StringLength(100)]
-        public string tenTinh { get; set; }
+        public string tenQG { get; set; }
 
         [StringLength(100)]
         public string pic { get; set; }
@@ -32,9 +28,7 @@ namespace Admin.Models
         [StringLength(100)]
         public string note { get; set; }
 
-        public virtual Nation Nation { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TourDestination> TourDestinations { get; set; }
+        public virtual ICollection<Province> Provinces { get; set; }
     }
 }
