@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Admin.Models;
 
 namespace Admin.Controllers
-{
+{  
     public class HomeController : Controller
     {
+        private DBcontextTour context = new DBcontextTour();
         // GET: Home
         public ActionResult Index()
         {
@@ -15,7 +17,8 @@ namespace Admin.Controllers
         }
         public ActionResult Table()
         {
-            return View();
+            var model = context.DestinationReviews.ToList();
+            return View(model);
         }
         public ActionResult Login()
         {
@@ -26,8 +29,6 @@ namespace Admin.Controllers
             return View();
         }
         ///////// code model
-
-
-
+        
     }
 }
