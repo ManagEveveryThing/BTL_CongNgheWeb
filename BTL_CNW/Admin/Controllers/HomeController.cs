@@ -13,5 +13,21 @@ namespace Admin.Controllers
         {
             return View();
         }
+        public ActionResult Table()
+        {
+            return View();
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
+        public ActionResult Register()
+        {
+            return View();
+        }
+        ///////// code model
+
+
+
     }
 }
