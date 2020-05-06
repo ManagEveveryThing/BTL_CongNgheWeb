@@ -1,0 +1,46 @@
+﻿
+
+@using Admin.Models.DB;
+
+@model List<colName>
+<table class="table table-borderless table-striped table-earning">
+    <thead>
+        <tr>
+            <th></th>
+            @foreach (colName it in Model)
+            {
+                <th>@it.COLUMN_NAME</th>
+            }
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <label class="au-checkbox">
+                    <input type="checkbox">
+                    <span class="au-checkmark"></span>
+                </label>
+            </td>
+                
+                <td>2018-09-29 05:57</td>
+                <td>Mobile</td>
+                <td>iPhone X 64Gb Grey</td>
+                <td class="process">Processed</td>
+                <td>$999.00</td>
+            <td>
+                <div class="table-data-feature">
+                    <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                        <i class="zmdi zmdi-edit"></i>
+                    </button>
+                    <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                        <i class="zmdi zmdi-delete"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+

@@ -15,6 +15,7 @@ namespace Admin.Controllers
         {
             return View();
         }
+        
         public ActionResult Table()
         {
             var model = context.DestinationReviews.ToList();
@@ -22,8 +23,22 @@ namespace Admin.Controllers
             ViewBag.tableName = tableName;
             return View(model);
         }
+        [ChildActionOnly]
+        public ActionResult _PartialPage_TableData(string nametable)
+        {
+            //var colName = context.colNames.Where(x => x.TABLE_NAME == nametable).ToList();
+            var colName = context.Database.SqlQuery<colName>("select * from colName where TABLE_NAME ='"+nametable+"'").ToList();
+            return PartialView(colName);
+        }
+        [ChildActionOnly]
+        public ActionResult _RowData(string nametable)
+        {
+            var colName = context.Database.SqlQuery<object>("select * from " + nametable).ToList();
+            return PartialView(colName);
+        }
         public ActionResult Login()
         {
+            
             return View();
         }
         public ActionResult Register()

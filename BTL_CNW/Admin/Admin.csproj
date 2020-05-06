@@ -314,6 +314,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\Blog.cs" />
+    <Compile Include="Models\DB\colName.cs" />
     <Compile Include="Models\DB\Customer.cs" />
     <Compile Include="Models\DB\DBcontextTour.cs" />
     <Compile Include="Models\DB\DestinationReview.cs" />
@@ -448,6 +449,8 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutPage_Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Shared\_PartialPage_TableData.cshtml" />
+    <Content Include="Views\Shared\_RowData.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

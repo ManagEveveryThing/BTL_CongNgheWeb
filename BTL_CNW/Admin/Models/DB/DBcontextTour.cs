@@ -31,6 +31,7 @@ namespace Admin.Models.DB
         public virtual DbSet<TourDestination> TourDestinations { get; set; }
         public virtual DbSet<Trip> Trips { get; set; }
         public virtual DbSet<WishList> WishLists { get; set; }
+        public virtual DbSet<colName> colNames { get; set; }
         public virtual DbSet<DestinationReview> DestinationReviews { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
