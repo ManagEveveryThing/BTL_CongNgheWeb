@@ -1,67 +1,41 @@
 ﻿
 @using Admin.Models.DB;
 
-@model List<object>
-<div id="DB_Table_Blog" >
+@model object
 
-</div>
-<div id="DB_Table_colName">
-
-</div>
-<div id="DB_Table_Customer">
-
-</div>
-<div id="DB_Table_DestinationReview">
-
-</div>
-<div id="DB_Table_DSDatXe">
-
-</div>
-<div id="DB_Table_DSKSCanTT">
-
-</div>
-<div id="DB_Table_DSKSTheoTrip">
-
-</div>
-<div id="DB_Table_DSKSTrongWL">
-
-</div>
-<div id="DB_Table_DSTourCanTT">
-
-</div>
-<div id="DB_Table_DSTourTrongWL">
-
-</div>
-<div id="DB_Table_DSTripTheoTour">
-
-</div>
-<div id="DB_Table_ElecBill">
-
-</div>
-<div id="DB_Table_HomeStay">
-
-</div>
-<div id="DB_Table_Nation">
-
-</div>
-<div id="DB_Table_Province">
-
-</div>
-<div id="DB_Table_Taxi">
-
-</div>
-<div id="DB_Table_TenCacBang">
-
-</div>
-<div id="DB_Table_Tour">
-
-</div>
-<div id="DB_Table_TourDestination">
-
-</div>
-<div id="DB_Table_Trip">
-
-</div>
-<div id="DB_Table_WishList">
-
-</div>
+    <tbody>
+        <tr>
+            <td>
+                <label class="au-checkbox">
+                    <input type="checkbox">
+                    <span class="au-checkmark"></span>
+                </label>
+            </td>
+            @{ switch (ViewBag.nameTable as string)
+                {
+                    case "Blog":
+                        foreach (Blog it in Model as List<Blog>)
+                        {
+                            <td>  @it.maBlog </td>
+                            <td>  @it.maDD </td>
+                            <td>  @it.username </td>
+                            <td>  @it.content </td>
+                            <td>  @it.pic </td>
+                            <td>  @it.note </td>
+                        }
+                        break;
+                }
+            }
+            <td>
+                <div class="table-data-feature">
+                    <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                        <i class="zmdi zmdi-edit"></i>
+                    </button>
+                    <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                        <i class="zmdi zmdi-delete"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+    

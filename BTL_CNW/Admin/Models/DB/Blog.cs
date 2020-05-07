@@ -5,9 +5,10 @@ namespace Admin.Models.DB
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
 
     [Table("Blog")]
-    public partial class Blog: RowTable
+    public partial class Blog/*: RowTable */
     {
         [Key]
         [StringLength(10)]
@@ -31,15 +32,25 @@ namespace Admin.Models.DB
 
         public virtual TourDestination TourDestination { get; set; }
 
-        public override string RowTable_TableType()
+        public string RowTable_TableType()
         {
-            return "<th>" + this.maBlog + "<th>\n" +
-                "<th>" + this.maDD + "<th>\n"+
-                "<th>" + this.username + "<th>\n"+
-                "<th>" + this.content + "<th>\n"+
-                "<th>" + this.pic + "<th>\n" +
-                "<th>" + this.note + "<th>\n"
-                ;
+            return "as";
+                //new ContentResult
+                //{
+                //    Content = " < th > " + this.maBlog + " < th >\n" +
+                //    "<th>" + this.maDD + "<th>\n" +
+                //    "<th>" + this.username + "<th>\n" +
+                //    "<th>" + this.content + "<th>\n" +
+                //    "<th>" + this.pic + "<th>\n" +
+                //    "<th>" + this.note + "<th>\n",
+                //    ContentType = "text/plain; charset=utf-8"
+                //};
+            //"<th>" + this.maBlog + "<th>\n" +
+            //"<th>" + this.maDD + "<th>\n" +
+            //"<th>" + this.username + "<th>\n" +
+            //"<th>" + this.content + "<th>\n" +
+            //"<th>" + this.pic + "<th>\n" +
+            //"<th>" + this.note + "<th>\n";
         }
     }
 }

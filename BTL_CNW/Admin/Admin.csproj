@@ -330,6 +330,7 @@
     <Compile Include="Models\DB\HomeStay.cs" />
     <Compile Include="Models\DB\Nation.cs" />
     <Compile Include="Models\DB\Province.cs" />
+    <Compile Include="Models\DB\RowTable.cs" />
     <Compile Include="Models\DB\Taxi.cs" />
     <Compile Include="Models\DB\TenCacBang.cs" />
     <Compile Include="Models\DB\Tour.cs" />
@@ -452,6 +453,8 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Shared\_PartialPage_TableData.cshtml" />
     <Content Include="Views\Shared\_RowData.cshtml" />
+    <Content Include="Views\Shared\_ColNameTable.cshtml" />
+    <Content Include="Views\Shared\_TableDB.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

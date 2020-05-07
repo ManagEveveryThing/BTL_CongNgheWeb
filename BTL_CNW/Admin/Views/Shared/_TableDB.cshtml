@@ -1,0 +1,553 @@
+﻿@using Admin.Models.DB;
+
+@model object
+    <table class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (colName it in ViewBag.colName)
+                {
+                    <th> @it.COLUMN_NAME</th>
+                }
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @{ switch (ViewBag.tableName as string)
+                {
+
+                    case "Blog":
+                        foreach (Blog it in Model as List<Blog>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maBlog </td>
+                                <td>  @it.maDD </td>
+                                <td>  @it.username </td>
+                                <td>  @it.content </td>
+                                <td>  @it.pic </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "Customer":
+                        foreach (Customer it in Model as List<Customer>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.username </td>
+                                <td>  @it.pass </td>
+                                <td>  @it.tenKH </td>
+                                <td>  @it.hoKH </td>
+                                <td>  @it.phoneNum </td>
+                                <td>  @it.email </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "DestinationReview":
+                        foreach (DestinationReview it in Model as List<DestinationReview>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maDD </td>
+                                <td>  @it.tenDD </td>
+                                <td>  @it.tenTinh </td>
+                                <td>  @it.tenQG </td>
+                                <td>  @it.pic </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "DSDatXe":
+                        foreach (DSDatXe it in Model as List<DSDatXe>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maHD </td>
+                                <td>  @it.bienSo </td>
+                                <td>  @it.cost </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "DSKSCanTT":
+                        foreach (DSKSCanTT it in Model as List<DSKSCanTT>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maKS </td>
+                                <td>  @it.maHD </td>
+                                <td>  @it.cost </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "DSKSTheoTrip":
+                        foreach (DSKSTheoTrip it in Model as List<DSKSTheoTrip>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maCD </td>
+                                <td>  @it.maKS </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "DSKSTrongWL":
+                        foreach (DSKSTrongWL it in Model as List<DSKSTrongWL>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maKS </td>
+                                <td>  @it.maWL </td>
+                                <td>  @it.ngayAdd </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "DSTourCanTT":
+                        foreach (DSTourCanTT it in Model as List<DSTourCanTT>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maTour </td>
+                                <td>  @it.maHD </td>
+                                <td>  @it.cost </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "DSTourTrongWL":
+                        foreach (DSTourTrongWL it in Model as List<DSTourTrongWL>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maTour </td>
+                                <td>  @it.maWL </td>
+                                <td>  @it.ngayAdd </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "DSTripTheoTour":
+                        foreach (DSTripTheoTour it in Model as List<DSTripTheoTour>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maCD </td>
+                                <td>  @it.maTour </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "ElecBill":
+                        foreach (ElecBill it in Model as List<ElecBill>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maHD </td>
+                                <td>  @it.username </td>
+                                <td>  @it.tongTien </td>
+                                <td>  @it.paymentMethod </td>
+                                <td>  @it.dayCreate </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "HomeStay":
+                        foreach (HomeStay it in Model as List<HomeStay>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maKS </td>
+                                <td>  @it.maDD </td>
+                                <td>  @it.tenKS </td>
+                                <td>  @it.phoneNum </td>
+                                <td>  @it.pic </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "Nation":
+                        foreach (Nation it in Model as List<Nation>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maQG </td>
+                                <td>  @it.tenQG </td>
+                                <td>  @it.pic </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "Province":
+                        foreach (Province it in Model as List<Province>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maTinh </td>
+                                <td>  @it.maQG </td>
+                                <td>  @it.tenTinh </td>
+                                <td>  @it.pic </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "Taxi":
+                        foreach (Taxi it in Model as List<Taxi>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.bienSo </td>
+                                <td>  @it.maDD </td>
+                                <td>  @it.soGhe </td>
+                                <td>  @it.phoneNum </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "Tour":
+                        foreach (Tour it in Model as List<Tour>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maTour </td>
+                                <td>  @it.tenTour </td>
+                                <td>  @it.dayStart </td>
+                                <td>  @it.soLuongMax </td>
+                                <td>  @it.soDem </td>
+                                <td>  @it.pic </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "TourDestination":
+                        foreach (TourDestination it in Model as List<TourDestination>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maDD </td>
+                                <td>  @it.maTinh </td>
+                                <td>  @it.tenDD </td>
+                                <td>  @it.pic </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "Trip":
+                        foreach (Trip it in Model as List<Trip>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maCD </td>
+                                <td>  @it.maDDStart </td>
+                                <td>  @it.maDDEnd </td>
+                                <td>  @it.dayStrat </td>
+                                <td>  @it.pic </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                    case "WishList":
+                        foreach (WishList it in Model as List<WishList>)
+                        {
+                            <tr>
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>  @it.maWL </td>
+                                <td>  @it.username </td>
+                                <td>  @it.note </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        break;
+                }
+            }
+
+        </tbody>
+        </table>

@@ -1,1 +1,16 @@
 ﻿
+@using Admin.Models.DB;
+
+@model List<colName> 
+
+
+<thead>
+    <tr>
+        <th></th>
+        @foreach (colName it in Model)
+        {
+            <th> @it.COLUMN_NAME</th>
+        }
+        <th></th>
+    </tr>
+</thead>

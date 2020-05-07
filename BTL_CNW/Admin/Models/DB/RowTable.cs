@@ -5,8 +5,11 @@ using System.Web;
 
 namespace Admin.Models.DB
 {
-    abstract public class RowTable
+    public class RowTable
     {
-        public abstract string RowTable_TableType();
+        public virtual string RowTable_TableType()
+        {
+            return null;
+        }
     }
 }
