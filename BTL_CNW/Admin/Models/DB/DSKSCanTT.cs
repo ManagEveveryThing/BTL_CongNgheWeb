@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("DSKSCanTT")]
-    public partial class DSKSCanTT
+    public partial class DSKSCanTT : RowTable
     {
         [Key]
         [Column(Order = 0)]
@@ -27,5 +27,13 @@ namespace Admin.Models.DB
         public virtual ElecBill ElecBill { get; set; }
 
         public virtual HomeStay HomeStay { get; set; }
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.maKS + "<th>\n" +
+                "<th>" + this.maHD + "<th>\n" +
+                "<th>" + this.cost + "<th>\n" +
+                "<th>" + this.note + "<th>\n" 
+                ;
+        }
     }
 }

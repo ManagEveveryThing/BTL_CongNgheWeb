@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("DestinationReview")]
-    public partial class DestinationReview
+    public partial class DestinationReview :RowTable
     {
         [Key]
         [StringLength(10)]
@@ -24,5 +24,15 @@ namespace Admin.Models.DB
 
         [StringLength(100)]
         public string pic { get; set; }
+
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.maDD + "<th>\n" +
+                "<th>" + this.tenDD + "<th>\n" +
+                "<th>" + this.tenTinh + "<th>\n" +
+                "<th>" + this.tenQG + "<th>\n" +
+                "<th>" + this.pic + "<th>\n"
+                ;
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("Nation")]
-    public partial class Nation
+    public partial class Nation : RowTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Nation()
@@ -30,5 +30,13 @@ namespace Admin.Models.DB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Province> Provinces { get; set; }
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.maQG + "<th>\n" +
+                "<th>" + this.tenQG + "<th>\n" +
+                "<th>" + this.pic + "<th>\n" +
+                "<th>" + this.note + "<th>\n"
+                ;
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("ElecBill")]
-    public partial class ElecBill
+    public partial class ElecBill : RowTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ElecBill()
@@ -46,5 +46,16 @@ namespace Admin.Models.DB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DSTourCanTT> DSTourCanTTs { get; set; }
+
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.maHD + "<th>\n" +
+                "<th>" + this.username + "<th>\n" +
+                "<th>" + this.tongTien + "<th>\n" +
+                "<th>" + this.paymentMethod + "<th>\n" +
+                "<th>" + this.dayCreate + "<th>\n" +
+                "<th>" + this.note + "<th>\n"
+                ;
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("Customer")]
-    public partial class Customer
+    public partial class Customer: RowTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
@@ -43,5 +43,17 @@ namespace Admin.Models.DB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WishList> WishLists { get; set; }
+
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.username + "<th>\n" +
+                "<th>" + this.pass + "<th>\n" +
+                "<th>" + this.tenKH + "<th>\n" +
+                "<th>" + this.hoKH + "<th>\n" +
+                "<th>" + this.phoneNum + "<th>\n" +
+                "<th>" + this.email + "<th>\n"+
+                "<th>" + this.note + "<th>\n"
+                ;
+        }
     }
 }

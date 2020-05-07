@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("DSTourTrongWL")]
-    public partial class DSTourTrongWL
+    public partial class DSTourTrongWL : RowTable
     {
         [Key]
         [Column(Order = 0)]
@@ -28,5 +28,13 @@ namespace Admin.Models.DB
         public virtual Tour Tour { get; set; }
 
         public virtual WishList WishList { get; set; }
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.maTour + "<th>\n" +
+                "<th>" + this.maWL + "<th>\n" +
+                "<th>" + this.ngayAdd + "<th>\n" +
+                "<th>" + this.note + "<th>\n" 
+                ;
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("TenCacBang")]
-    public partial class TenCacBang
+    public partial class TenCacBang 
     {
         [Key]
         [Column("tenCacBang")]

@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("Blog")]
-    public partial class Blog
+    public partial class Blog: RowTable
     {
         [Key]
         [StringLength(10)]
@@ -30,5 +30,16 @@ namespace Admin.Models.DB
         public string note { get; set; }
 
         public virtual TourDestination TourDestination { get; set; }
+
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.maBlog + "<th>\n" +
+                "<th>" + this.maDD + "<th>\n"+
+                "<th>" + this.username + "<th>\n"+
+                "<th>" + this.content + "<th>\n"+
+                "<th>" + this.pic + "<th>\n" +
+                "<th>" + this.note + "<th>\n"
+                ;
+        }
     }
 }

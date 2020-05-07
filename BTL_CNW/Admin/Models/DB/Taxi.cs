@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("Taxi")]
-    public partial class Taxi
+    public partial class Taxi : RowTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Taxi()
@@ -35,5 +35,14 @@ namespace Admin.Models.DB
         public virtual ICollection<DSDatXe> DSDatXes { get; set; }
 
         public virtual TourDestination TourDestination { get; set; }
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.bienSo + "<th>\n" +
+                "<th>" + this.maDD + "<th>\n" +
+                "<th>" + this.soGhe + "<th>\n" +
+                "<th>" + this.phoneNum + "<th>\n" +
+                "<th>" + this.note + "<th>\n"
+                ;
+        }
     }
 }

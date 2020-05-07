@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("Trip")]
-    public partial class Trip
+    public partial class Trip : RowTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Trip()
@@ -46,5 +46,16 @@ namespace Admin.Models.DB
         public virtual TourDestination TourDestination { get; set; }
 
         public virtual TourDestination TourDestination1 { get; set; }
+
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.maCD + "<th>\n" +
+                "<th>" + this.maDDStart + "<th>\n" +
+                "<th>" + this.maDDEnd + "<th>\n" +
+                "<th>" + this.dayStrat + "<th>\n" +
+                "<th>" + this.pic + "<th>\n" +
+                "<th>" + this.note + "<th>\n"
+                ;
+        }
     }
 }

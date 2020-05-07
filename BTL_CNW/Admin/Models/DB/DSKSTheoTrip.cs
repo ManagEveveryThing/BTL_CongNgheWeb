@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("DSKSTheoTrip")]
-    public partial class DSKSTheoTrip
+    public partial class DSKSTheoTrip : RowTable
     {
         [Key]
         [Column(Order = 0)]
@@ -25,5 +25,12 @@ namespace Admin.Models.DB
         public virtual HomeStay HomeStay { get; set; }
 
         public virtual Trip Trip { get; set; }
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.maCD + "<th>\n" +
+                "<th>" + this.maKS + "<th>\n" +
+                "<th>" + this.note + "<th>\n" 
+                ;
+        }
     }
 }

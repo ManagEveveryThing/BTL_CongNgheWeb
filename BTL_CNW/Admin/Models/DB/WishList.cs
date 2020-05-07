@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("WishList")]
-    public partial class WishList
+    public partial class WishList : RowTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public WishList()
@@ -34,5 +34,13 @@ namespace Admin.Models.DB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DSTourTrongWL> DSTourTrongWLs { get; set; }
+
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.maWL + "<th>\n" +
+                "<th>" + this.username + "<th>\n" +
+                "<th>" + this.note + "<th>\n"
+                ;
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("HomeStay")]
-    public partial class HomeStay
+    public partial class HomeStay : RowTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HomeStay()
@@ -47,5 +47,16 @@ namespace Admin.Models.DB
         public virtual ICollection<DSKSTrongWL> DSKSTrongWLs { get; set; }
 
         public virtual TourDestination TourDestination { get; set; }
+
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.maKS + "<th>\n" +
+                "<th>" + this.maDD + "<th>\n" +
+                "<th>" + this.tenKS + "<th>\n" +
+                "<th>" + this.phoneNum + "<th>\n" +
+                "<th>" + this.pic + "<th>\n" +
+                "<th>" + this.note + "<th>\n"
+                ;
+        }
     }
 }

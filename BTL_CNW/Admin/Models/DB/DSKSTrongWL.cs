@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("DSKSTrongWL")]
-    public partial class DSKSTrongWL
+    public partial class DSKSTrongWL : RowTable
     {
         [Key]
         [Column(Order = 0)]
@@ -28,5 +28,13 @@ namespace Admin.Models.DB
         public virtual HomeStay HomeStay { get; set; }
 
         public virtual WishList WishList { get; set; }
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.maKS + "<th>\n" +
+                "<th>" + this.maWL + "<th>\n" +
+                "<th>" + this.ngayAdd + "<th>\n" +
+                "<th>" + this.note + "<th>\n"
+                ;
+        }
     }
 }

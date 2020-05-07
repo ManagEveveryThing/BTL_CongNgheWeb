@@ -47,5 +47,18 @@ namespace Admin.Controllers
         }
         ///////// code model
         
+
+        /// ajax:
+        [HttpPost]
+        public ActionResult getColName(string tableName)
+        {
+            var model =context.Database.SqlQuery<colName>("select * from colName where TABLE_NAME ='" + tableName + "'").ToList();
+            return PartialView("_ColNameTable",model);
+        }
+        [HttpPost]
+        public JsonResult getDataTable(string tableName)
+        {
+
+        }
     }
 }

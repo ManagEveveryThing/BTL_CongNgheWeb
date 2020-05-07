@@ -7,7 +7,7 @@ namespace Admin.Models.DB
     using System.Data.Entity.Spatial;
 
     [Table("TourDestination")]
-    public partial class TourDestination
+    public partial class TourDestination : RowTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TourDestination()
@@ -52,5 +52,14 @@ namespace Admin.Models.DB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Trip> Trips1 { get; set; }
+        public override string RowTable_TableType()
+        {
+            return "<th>" + this.maDD + "<th>\n" +
+                "<th>" + this.maTinh + "<th>\n" +
+                "<th>" + this.tenDD + "<th>\n" +
+                "<th>" + this.pic + "<th>\n" +
+                "<th>" + this.note + "<th>\n"
+                ;
+        }
     }
 }

@@ -342,7 +342,7 @@
                                     <option selected="selected">Tables</option>
                                     @foreach (TenCacBang it in ViewBag.tableName)
                                     {
-                                        <option value="">@it.tenCacBang1</option>
+                                        <option class="ajax_selected_click" data-id="@it.tenCacBang1" onclick="">@it.tenCacBang1</option>
                                     }
                                 </select>
                                 <div class="dropDownSelect2"></div>

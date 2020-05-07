@@ -136,6 +136,7 @@
     <Content Include="Contents\images\icon\logo.png" />
     <Content Include="Contents\images\icon\Untitled-1.jpg" />
     <Content Include="Contents\js\bootstrap-datetimepicker.js" />
+    <Content Include="Contents\js\homeController.js" />
     <Content Include="Contents\js\main.js" />
     <Content Include="Contents\js\moment.js" />
     <Content Include="Contents\media\9606031aabebde32fa96edeff071a132.jpg" />
