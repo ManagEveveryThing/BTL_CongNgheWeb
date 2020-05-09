@@ -21,7 +21,6 @@ namespace Admin.Controllers
             var model = context.DestinationReviews.ToList();
             var tableNameList = context.TenCacBangs.ToList();
             ViewBag.tableNameList = tableNameList;
-            
             return View(model);
         }
         [ChildActionOnly]
@@ -98,7 +97,7 @@ namespace Admin.Controllers
                     break;
                 case "DSTourCanTT":
                     data = context.Database.SqlQuery<DSTourCanTT>("select * from " + tableName).ToList();
-                    count = (data as List<Blog>).Count;
+                    count = (data as List<DSTourCanTT>).Count;
                     break;
                 case "DSTourTrongWL":
                     data = context.Database.SqlQuery<DSTourTrongWL>("select * from " + tableName).ToList();

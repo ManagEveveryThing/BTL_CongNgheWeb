@@ -9,19 +9,6 @@
 @model List<DestinationReview>
 
 
-@*<script>
-    function getAll(name) {
-        var dataModel = $('#dataTable');
-            $.ajax({
-                url: '/Admin/Home/getTableData/' + name,
-                contentType: 'application/html ; charset:utf-8',
-                type: 'GET',
-                dataType: 'html',
-                success: function (result) { dataModel.empty().append(result); }
-            });
-    }
-</script>*@
-
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
@@ -109,7 +96,7 @@
                                     <option selected="selected">All Properties</option>
                                     <option value="">Products</option>
                                     <option value="">Services</option>
-                                </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 118.8px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-property-v7-container"><span class="select2-selection__rendered" id="select2-property-v7-container" title="All Properties">All Properties</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </select>
                                 <div class="dropDownSelect2"></div>
                             </div>
                             <div class="rs-select2--dark rs-select2--sm rs-select2--border">
@@ -117,7 +104,7 @@
                                     <option selected="selected">All Time</option>
                                     <option value="">By Month</option>
                                     <option value="">By Day</option>
-                                </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 91.6px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-time-xl-container"><span class="select2-selection__rendered" id="select2-time-xl-container" title="All Time">All Time</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </select>
                                 <div class="dropDownSelect2"></div>
                             </div>
                         </div>
@@ -162,7 +149,7 @@
                                                     <option selected="selected">Full Control</option>
                                                     <option value="">Post</option>
                                                     <option value="">Watch</option>
-                                                </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 106px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-property-ov-container"><span class="select2-selection__rendered" id="select2-property-ov-container" title="Full Control">Full Control</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                                </select>
                                                 <div class="dropDownSelect2"></div>
                                             </div>
                                         </td>
@@ -196,7 +183,7 @@
                                                     <option value="">Full Control</option>
                                                     <option value="" selected="selected">Post</option>
                                                     <option value="">Watch</option>
-                                                </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 106px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-property-n3-container"><span class="select2-selection__rendered" id="select2-property-n3-container" title="Post">Post</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                                </select>
                                                 <div class="dropDownSelect2"></div>
                                             </div>
                                         </td>
@@ -230,7 +217,7 @@
                                                     <option value="">Full Control</option>
                                                     <option value="" selected="selected">Post</option>
                                                     <option value="">Watch</option>
-                                                </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 106px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-property-kc-container"><span class="select2-selection__rendered" id="select2-property-kc-container" title="Post">Post</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                                </select>
                                                 <div class="dropDownSelect2"></div>
                                             </div>
                                         </td>
@@ -264,7 +251,7 @@
                                                     <option selected="selected">Full Control</option>
                                                     <option value="">Post</option>
                                                     <option value="">Watch</option>
-                                                </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 106px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-property-9p-container"><span class="select2-selection__rendered" id="select2-property-9p-container" title="Full Control">Full Control</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                                </select>
                                                 <div class="dropDownSelect2"></div>
                                             </div>
                                         </td>
@@ -352,12 +339,12 @@
                     <div class="table-data__tool">
                         <div class="table-data__tool-left">
                             <div class="rs-select2--light rs-select2--md">
-                                <select class="js-select2 select2-hidden-accessible ajax_selected_click"  name="property" tabindex="-1" aria-hidden="true">
-                                    @*<option selected="selected">Tables</option>*@
-                                    @foreach (TenCacBang it in ViewBag.tableNameList)
-                                    {
-                                        <option class="optionChose" name="@it.tenCacBang1">@it.tenCacBang1</option>
-                                    }
+                                <select class="js-select2 select2-hidden-accessible ajax_selected_click" name="property" tabindex="-1" aria-hidden="true">
+                                    <option selected="selected" disabled>Tables</option>
+                                        @foreach (TenCacBang it in ViewBag.tableNameList)
+                                        {
+                                            <option class="optionChose" name="@it.tenCacBang1">@it.tenCacBang1</option>
+                                        }
                                 </select>
                                 <div class="dropDownSelect2"></div>
                             </div>
