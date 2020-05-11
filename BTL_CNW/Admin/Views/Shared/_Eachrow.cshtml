@@ -1,0 +1,19 @@
+﻿
+@using Admin.Models.DB;
+
+
+    <table class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (colName it in ViewBag.colName)
+                {
+                    <th> @it.COLUMN_NAME</th>
+                }
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>

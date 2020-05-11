@@ -151,5 +151,13 @@ namespace Admin.Controllers
             ViewBag.countRow = count;
             return PartialView("_TableDB", data);
         }
+
+        [HttpGet]
+        public ActionResult getOneRow(string tableName)
+        {
+            return View();
+        }
+
+
     }
 }

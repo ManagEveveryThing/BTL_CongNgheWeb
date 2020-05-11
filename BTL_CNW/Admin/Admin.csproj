@@ -453,6 +453,7 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Shared\_PartialPage_TableData.cshtml" />
     <Content Include="Views\Shared\_TableDB.cshtml" />
+    <Content Include="Views\Shared\_Eachrow.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
