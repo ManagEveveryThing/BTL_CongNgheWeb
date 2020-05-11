@@ -10,17 +10,17 @@
         //$.each($tds, function () {
         //    rowval = rowval+($(this).text());
         //});
-        var dataModel = $('#dataTable');
+        var dataModel = $('#myModal');
         $.ajax({
-            url: '/Home/ShowRow/',
+            url: '/Home/ShowRow',
             contentType: 'application/html ; charset:utf-8',
             data: { tableName: nameTable, key1: key1,key2: key2 },
             type: 'GET',
             dataType: 'html',
-            success: function (result) { dataModel.empty().append(result); }
+            success: function (result) { dataModel.empty().append(result); dataModel.modal(); }
         });
+        
     });
-
 
     $(".ajax_selected_click").change(function () {
         var nameTb = $(".ajax_selected_click option:selected").text();
