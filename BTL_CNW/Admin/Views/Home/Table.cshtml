@@ -340,8 +340,8 @@
                         <div class="table-data__tool-left">
                             <div class="rs-select2--light rs-select2--md">
                                 <select class="js-select2 select2-hidden-accessible ajax_selected_click" name="property" tabindex="-1" aria-hidden="true">
-                                    <option selected="selected" disabled>Tables</option>
-                                        @foreach (TenCacBang it in ViewBag.tableNameList)
+                                    <option selected="selected" disabled>Table</option>
+                                        @foreach (TenCacBang it in ViewBag.tableNameList) //list<tencanBang>
                                         {
                                             <option class="optionChose" name="@it.tenCacBang1">@it.tenCacBang1</option>
                                         }
@@ -361,7 +361,7 @@
                             </button>
                         </div>
                         <div class="table-data__tool-right">
-                            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <button class="au-btn au-btn-icon au-btn--green au-btn--small ajax_add_item">
                                 <i class="zmdi zmdi-plus"></i>add item
                             </button>
                             <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
@@ -562,3 +562,4 @@
     </div>
 </div>
     <div class="modal fade" id="myModal" role="dialog"> </div>
+</div>
