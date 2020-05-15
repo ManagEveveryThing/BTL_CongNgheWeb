@@ -63,12 +63,14 @@ namespace Admin.Controllers
         /// <summary>
         /// BLogs
         /// </summary>
-        private void AddBLogs(Blog data)
+        private void AddBlogs(Blog data) // them 1 row vao csdl
         {
             if (data != null)
             {
-                string maDD = (context.TourDestinations.Find(data.maDD)).tenDD;
-                if(maDD != null)
+                // kiem tra khoa ngoai 
+                var maDD = (context.TourDestinations.Find(data.maDD));
+                var username = context.Customers.Find(data.username);
+                if(maDD != null && username != null) // tìm thấy
                 {
                     if (context.Blogs.Find(data.maBlog) == null)
                     {
@@ -79,13 +81,13 @@ namespace Admin.Controllers
             }
             context.SaveChanges();
         }
-        private void ModifyBLogs(Blog dataO,Blog dataN)
+        private void ModifyBlogs(Blog dataO,Blog dataN)
         {
-            Blog data = context.Blogs.Find(dataO.maDD);
+            Blog data = context.Blogs.Find(dataO.maBlog);
             if(dataO.maBlog == dataN.maBlog)
             {
                 // kiểm tra khóa ngoại
-                if(context.TourDestinations.Find(dataN.maDD)!= null)
+                if(context.TourDestinations.Find(dataN.maDD)!= null) // kiểm tra hợp lệ của khóa ngoại
                 {
                     data.maDD = dataN.maDD;
                     data.username = dataN.username;
@@ -93,9 +95,11 @@ namespace Admin.Controllers
                     data.pic = dataN.pic;
                     data.note = dataN.note;
                 }
-                else
-                {
-                    if(context.Blogs.Find(dataN.maBlog)== null)
+            }
+            else
+            {
+                if (context.TourDestinations.Find(dataN.maDD) != null)
+                    if (context.Blogs.Find(dataN.maBlog) == null)
                     {
                         data.maBlog = dataN.maBlog;
                         data.maDD = dataN.maDD;
@@ -104,21 +108,21 @@ namespace Admin.Controllers
                         data.pic = dataN.pic;
                         data.note = dataN.note;
                     }
-                }
             }
             context.SaveChanges();
         }
-        private void ModifyBlogs_DD(string maDD)
+        private void ModifyBlogs_DD(string maDD_O,string maDD_N)
         {
+            // thiếu kt hợp lệ
             List<Blog> listData = new List<Blog>();
-            listData = context.Database.SqlQuery<Blog>("select * from Blog where maDD = '"+maDD+"'").ToList();
+            listData = context.Database.SqlQuery<Blog>("select * from Blog where maDD = '"+maDD_O+"'").ToList();
             foreach(Blog item in listData)
             {
-                item.maDD = maDD;
+                item.maDD = maDD_N;
             }
             context.SaveChanges();
         }
-        private void DeleteBLogs(Blog data)
+        private void DeleteBlogs(Blog data)
         {
             if(data != null)
             {
@@ -127,7 +131,7 @@ namespace Admin.Controllers
             }
             context.SaveChanges();
         }
-        private void DeleteBLogs_DD(string maDD)
+        private void DeleteBlogs_DD(string maDD)
         {
             List<Blog> listData = new List<Blog>();
             listData = context.Database.SqlQuery<Blog>("select * from Blog where maDD = '" + maDD + "'").ToList();
@@ -155,11 +159,11 @@ namespace Admin.Controllers
         }
         private void ModifyCustomer(Customer dataO,Customer dataN)
         {
-            Customer data = context.Customers.Find(dataO.username);
+            Customer data = context.Customers.Find(dataO.username); // date old
             if (dataO.username == dataN.username)
             {
                 // kiểm tra khóa ngoại
-                // kiểm tra bảng liên quan
+                
                 // sử bảng gốc
                 data.pass = dataN.pass;
                 data.tenKH = dataN.tenKH;
@@ -171,20 +175,23 @@ namespace Admin.Controllers
             else
             {
                 // gọi hàm thay đổi wishList
-
-                data.username = dataN.username;
-                data.pass = dataN.pass;
-                data.tenKH = dataN.tenKH;
-                data.hoKH = dataN.hoKH;
-                data.phoneNum = dataN.phoneNum;
-                data.email = dataN.email;
-                data.note = dataN.note;
+                ModifyWishList();
+                //
+                //data.username = dataN.username;
+                //data.pass = dataN.pass;
+                //data.tenKH = dataN.tenKH;
+                //data.hoKH = dataN.hoKH;
+                //data.phoneNum = dataN.phoneNum;
+                //data.email = dataN.email;
+                //data.note = dataN.note;
+                data = dataN;
             }
             context.SaveChanges();
         }
         private void DeleteCustomer(Customer data)
         {
             // xóa liên quan
+            DeleteWishList();// chuyền khóa chính hay username;
             // xóa gốc
             if (data != null)
             {
@@ -546,9 +553,10 @@ namespace Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult ShowRow(string tableName, string key1,string key2)
+        public ActionResult ShowRow(string tableName, string key1,string key2, string actionName)
         {
             List<string> re = new List<string>();
+            ViewBag.actionName = actionName;
             ViewBag.nameTable = tableName;
             ViewBag.colName = context.Database.SqlQuery<colName>("select * from colName where TABLE_NAME = '" + tableName + "'").ToList();
             if (key1 != "")
@@ -720,17 +728,33 @@ namespace Admin.Controllers
             return PartialView("_Eachrow",re);
         }
 
-        [HttpGet]
-        public ActionResult ModifyRow(string tableName,Array rowVal)
+        [HttpPost]
+        public ActionResult ModifyRow()
         {
-            
+            String tableName = Request.Form["TableName"];
+            ViewBag.nameTable = tableName;
+            object dataO;
             object data;
             switch (tableName)
             {
                 case "Blog":
+                    data = new Blog();
+                    dataO = new Blog();
+                    (data as Blog).maBlog = Request.Form["0"];
+                    (data as Blog).maDD = Request.Form["1"];
+                    (data as Blog).username = Request.Form["2"];
+                    (data as Blog).content = Request.Form["3"];
+                    (data as Blog).pic = Request.Form["4"];
+                    (data as Blog).note = Request.Form["5"];
+                    (dataO as Blog).maBlog = Request.Form["50"];
+                    (dataO as Blog).maDD = Request.Form["51"];
+                    (dataO as Blog).username = Request.Form["52"];
+                    (dataO as Blog).content = Request.Form["53"];
+                    (dataO as Blog).pic = Request.Form["54"];
+                    (dataO as Blog).note = Request.Form["55"];
+                    ModifyBlogs(dataO as Blog,data as Blog);
                     data = context.Database.SqlQuery<Blog>("select * from " + tableName).ToList();
-                    
-                break;
+                    break;
                 case "Customer":
                     data = context.Database.SqlQuery<Customer>("select * from " + tableName).ToList();
                     
@@ -792,24 +816,29 @@ namespace Admin.Controllers
                     data = null;
                 break;
             }
-            context.SaveChanges();
-            return getTableData(tableName);
+            ViewBag.colName = context.Database.SqlQuery<colName>("select * from colName where TABLE_NAME = '" + tableName + "'").ToList();
+            ViewBag.tableName = tableName;
+            return PartialView("_TableDB", data);
         }
 
-        [HttpGet]
-        public ActionResult AddRow(string tableName, string key1, string key2)
-            // tính lại
+        [HttpPost]
+        public ActionResult AddRow()
         {
+            String tableName = Request.Form["TableName"];
             ViewBag.nameTable = tableName;
-            ViewBag.colName = context.Database.SqlQuery<colName>("select * from colName where TABLE_NAME = '" + tableName + "'").ToList();
-            key1 = key1.Trim();
-            if (key2 != null) key2 = key2.Trim();
-            object data;
+            object data=null;
             switch (tableName)
             {
                 case "Blog":
-                    data = context.Database.SqlQuery<Blog>("select * from " + tableName + " where maBlog = '" + key1 + "'").ToList();
-                    AddBLogs((data as List<Blog>)[0]);
+                    data = new Blog();
+                    (data as Blog).maBlog = Request.Form["0"];
+                    (data as Blog).maDD = Request.Form["1"];
+                    (data as Blog).username = Request.Form["2"];
+                    (data as Blog).content = Request.Form["3"];
+                    (data as Blog).pic = Request.Form["4"];
+                    (data as Blog).note = Request.Form["5"];
+                    AddBlogs(data as Blog);
+                    data = context.Database.SqlQuery<Blog>("select * from " + tableName).ToList();
                     break;
                 case "Customer":
                     data = context.Database.SqlQuery<Customer>("select * from " + tableName).ToList();
@@ -872,140 +901,149 @@ namespace Admin.Controllers
                     data = null;
                     break;
             }
-            context.SaveChanges();
-            return getTableData(tableName);
+            //var ads = context.DestinationReviews.ToList();
+            //var tableNameList = context.TenCacBangs.ToList();
+            //ViewBag.tableNameList = tableNameList;
+            //return View("Table", ads);
+            ViewBag.colName = context.Database.SqlQuery<colName>("select * from colName where TABLE_NAME = '" + tableName + "'").ToList();
+            ViewBag.tableName = tableName;
+            return PartialView("_TableDB", data);
         }
 
-        [HttpGet]
-        public ActionResult DeleteRow(string tableName, string key1, string key2)
+        [HttpPost]
+        public ActionResult DeleteRow()
         {
+            String tableName = Request.Form["TableName"];
             ViewBag.nameTable = tableName;
-            ViewBag.colName = context.Database.SqlQuery<colName>("select * from colName where TABLE_NAME = '" + tableName + "'").ToList();
-            key1 = key1.Trim();
-            if (key2 != null) key2 = key2.Trim();
-            object data;
+            object data = null;
             switch (tableName)
             {
                 case "Blog":
-                    data = context.Database.SqlQuery<Blog>("select * from " + tableName + " where maBlog = '" + key1 + "'").ToList();
-                    if (data != null)
-                        context.Blogs.Attach((data as List<Blog>)[0]);
-                        context.Blogs.Remove((data as List<Blog>)[0]);
+                    data = new Blog();
+                    (data as Blog).maBlog = Request.Form["0"];
+                    (data as Blog).maDD = Request.Form["1"];
+                    (data as Blog).username = Request.Form["2"];
+                    (data as Blog).content = Request.Form["3"];
+                    (data as Blog).pic = Request.Form["4"];
+                    (data as Blog).note = Request.Form["5"];
+                    DeleteBlogs(data as Blog);
+                    data = context.Database.SqlQuery<Blog>("select * from " + tableName).ToList();
                     break;
                 case "Customer":
-                    data = context.Database.SqlQuery<Customer>("select * from " + tableName + " where username = '" + key1 + "'").ToList();
+                    //data = context.Database.SqlQuery<Customer>("select * from " + tableName + " where username = '" + key1 + "'").ToList();
                     if (data != null)
                         context.Customers.Attach((data as List<Customer>)[0]);
                         context.Customers.Remove((data as List<Customer>)[0]);
                     break;
                 case "DestinationReview":
-                    data = context.Database.SqlQuery<DestinationReview>("select * from " + tableName + " where maDD = '" + key1 + "'").ToList();
+                    //data = context.Database.SqlQuery<DestinationReview>("select * from " + tableName + " where maDD = '" + key1 + "'").ToList();
                     if (data != null)
                         context.DestinationReviews.Attach((data as List<DestinationReview>)[0]);
                         context.DestinationReviews.Remove((data as List<DestinationReview>)[0]);
                     break;
                 case "DSDatXe":
-                    data = context.Database.SqlQuery<DSDatXe>("select * from " + tableName + " where maHD = '" + key1 + "' and bienSo = '" + key2 + "'").ToList();
+                    //data = context.Database.SqlQuery<DSDatXe>("select * from " + tableName + " where maHD = '" + key1 + "' and bienSo = '" + key2 + "'").ToList();
                     if (data != null)
                         context.DSDatXes.Attach((data as List<DSDatXe>)[0]);
                         context.DSDatXes.Remove((data as List<DSDatXe>)[0]);
                     break;
                 case "DSKSCanTT":
-                    data = context.Database.SqlQuery<DSKSCanTT>("select * from " + tableName + " where maKS = '" + key1 + "' and maHD = '" + key2 + "'").ToList();
+                    //data = context.Database.SqlQuery<DSKSCanTT>("select * from " + tableName + " where maKS = '" + key1 + "' and maHD = '" + key2 + "'").ToList();
                     if (data != null)
                         context.DSKSCanTTs.Attach((data as List<DSKSCanTT>)[0]);
                         context.DSKSCanTTs.Remove((data as List<DSKSCanTT>)[0]);
                     break;
                 case "DSKSTheoTrip":
-                    data = context.Database.SqlQuery<DSKSTheoTrip>("select * from " + tableName + " where maCD = '" + key1 + "' and maKS = '" + key2 + "'").ToList();
+                    //data = context.Database.SqlQuery<DSKSTheoTrip>("select * from " + tableName + " where maCD = '" + key1 + "' and maKS = '" + key2 + "'").ToList();
                     if (data != null)
                         context.DSKSTheoTrips.Attach((data as List<DSKSTheoTrip>)[0]);
                         context.DSKSTheoTrips.Remove((data as List<DSKSTheoTrip>)[0]);
                     break;
                 case "DSKSTrongWL":
-                    data = context.Database.SqlQuery<DSKSTrongWL>("select * from " + tableName + " where maKS = '" + key1 + "' and maWL = '" + key2 + "'").ToList();
+                    //data = context.Database.SqlQuery<DSKSTrongWL>("select * from " + tableName + " where maKS = '" + key1 + "' and maWL = '" + key2 + "'").ToList();
                     if (data != null)
                         context.DSKSTrongWLs.Attach((data as List<DSKSTrongWL>)[0]);
                         context.DSKSTrongWLs.Remove((data as List<DSKSTrongWL>)[0]);
                     break;
                 case "DSTourCanTT":
-                    data = context.Database.SqlQuery<DSTourCanTT>("select * from " + tableName + " where maTour = '" + key1 + "' and maHD = '" + key2 + "'").ToList();
+                    //data = context.Database.SqlQuery<DSTourCanTT>("select * from " + tableName + " where maTour = '" + key1 + "' and maHD = '" + key2 + "'").ToList();
                     if (data != null)
                         context.DSTourCanTTs.Attach((data as List<DSTourCanTT>)[0]);
                         context.DSTourCanTTs.Remove((data as List<DSTourCanTT>)[0]);
                     break;
                 case "DSTourTrongWL":
-                    data = context.Database.SqlQuery<DSTourTrongWL>("select * from " + tableName + " where maTour = '" + key1 + "' and maWL = '" + key2 + "'").ToList();
+                    //data = context.Database.SqlQuery<DSTourTrongWL>("select * from " + tableName + " where maTour = '" + key1 + "' and maWL = '" + key2 + "'").ToList();
                     if (data != null)
                         context.DSTourTrongWLs.Attach((data as List<DSTourTrongWL>)[0]);
                         context.DSTourTrongWLs.Remove((data as List<DSTourTrongWL>)[0]);
                     break;
                 case "DSTripTheoTour":
-                    data = context.Database.SqlQuery<DSTripTheoTour>("select * from " + tableName + " where maCD = '" + key1 + "' and maTour = '" + key2 + "'").ToList();
+                    //data = context.Database.SqlQuery<DSTripTheoTour>("select * from " + tableName + " where maCD = '" + key1 + "' and maTour = '" + key2 + "'").ToList();
                     if (data != null)
                         context.DSTripTheoTours.Attach((data as List<DSTripTheoTour>)[0]);
                         context.DSTripTheoTours.Remove((data as List<DSTripTheoTour>)[0]);
                     break;
                 case "ElecBill":
-                    data = context.Database.SqlQuery<ElecBill>("select * from " + tableName + " where maHD = '" + key1 + "'").ToList();
+                    //data = context.Database.SqlQuery<ElecBill>("select * from " + tableName + " where maHD = '" + key1 + "'").ToList();
                     if (data != null)
                         context.ElecBills.Attach((data as List<ElecBill>)[0]);
                         context.ElecBills.Remove((data as List<ElecBill>)[0]);
                     break;
                 case "HomeStay":
-                    data = context.Database.SqlQuery<HomeStay>("select * from " + tableName + " where maKS = '" + key1 + "'").ToList();
+                    //data = context.Database.SqlQuery<HomeStay>("select * from " + tableName + " where maKS = '" + key1 + "'").ToList();
                     if (data != null)
                         context.HomeStays.Attach((data as List<HomeStay>)[0]);
                         context.HomeStays.Remove((data as List<HomeStay>)[0]);
                     break;
                 case "Nation":
-                    data = context.Database.SqlQuery<Nation>("select * from " + tableName + " where maQG = '" + key1 + "'").ToList();
+                    //data = context.Database.SqlQuery<Nation>("select * from " + tableName + " where maQG = '" + key1 + "'").ToList();
                     if (data != null)
                         context.Nations.Attach((data as List<Nation>)[0]);
                         context.Nations.Remove((data as List<Nation>)[0]);
                     break;
                 case "Province":
-                    data = context.Database.SqlQuery<Province>("select * from " + tableName + " where maTinh = '" + key1 + "'").ToList();
+                    //data = context.Database.SqlQuery<Province>("select * from " + tableName + " where maTinh = '" + key1 + "'").ToList();
                     if (data != null)
                         context.Provinces.Attach((data as List<Province>)[0]);
                         context.Provinces.Remove((data as List<Province>)[0]);
                     break;
                 case "Taxi":
-                    data = context.Database.SqlQuery<Taxi>("select * from " + tableName + " where bienSo = '" + key1 + "'").ToList();
+                    //data = context.Database.SqlQuery<Taxi>("select * from " + tableName + " where bienSo = '" + key1 + "'").ToList();
                     if (data != null)
                         context.Taxis.Attach((data as List<Taxi>)[0]);
                         context.Taxis.Remove((data as List<Taxi>)[0]);
                     break;
                 case "Tour":
-                    data = context.Database.SqlQuery<Tour>("select * from " + tableName + " where maTour = '" + key1 + "'").ToList();
+                    //data = context.Database.SqlQuery<Tour>("select * from " + tableName + " where maTour = '" + key1 + "'").ToList();
                     if (data != null)
                         context.Tours.Attach((data as List<Tour>)[0]);
                         context.Tours.Remove((data as List<Tour>)[0]);
                     break;
                 case "TourDestination":
-                    data = context.Database.SqlQuery<TourDestination>("select * from " + tableName + " where maDD = '" + key1 + "'").ToList();
+                    //data = context.Database.SqlQuery<TourDestination>("select * from " + tableName + " where maDD = '" + key1 + "'").ToList();
                     if (data != null)
                         context.TourDestinations.Attach((data as List<TourDestination>)[0]);
                         context.TourDestinations.Remove((data as List<TourDestination>)[0]);
                     break;
                 case "Trip":
-                    data = context.Database.SqlQuery<Trip>("select * from " + tableName + " where maCD = '" + key1 + "'").ToList();
+                    //data = context.Database.SqlQuery<Trip>("select * from " + tableName + " where maCD = '" + key1 + "'").ToList();
                     if (data != null)
                         context.Trips.Attach((data as List<Trip>)[0]);
                         context.Trips.Remove((data as List<Trip>)[0]);
                     break;
                 case "WishList":
-                    data = context.Database.SqlQuery<WishList>("select * from " + tableName + " where maWL = '" + key1 + "'").ToList();
+                    //data = context.Database.SqlQuery<WishList>("select * from " + tableName + " where maWL = '" + key1 + "'").ToList();
                     if (data != null)
                         context.WishLists.Attach((data as List<WishList>)[0]);
                         context.WishLists.Remove((data as List<WishList>)[0]);
                     break;
                 default:
-                    data = null;
+                    //data = null;
                     break;   
             }
-            context.SaveChanges();
-            return getTableData(tableName);
+            ViewBag.colName = context.Database.SqlQuery<colName>("select * from colName where TABLE_NAME = '" + tableName + "'").ToList();
+            ViewBag.tableName = tableName;
+            return PartialView("_TableDB", data);
         }
     }
 }

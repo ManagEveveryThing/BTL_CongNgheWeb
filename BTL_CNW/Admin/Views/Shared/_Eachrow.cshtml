@@ -16,6 +16,9 @@
     .modal-footer {
         background-color: #f9f9f9;
     }
+    input{
+        margin-bottom: 8px;
+    }
 </style>
 
 
@@ -28,13 +31,18 @@
             <h4> @ViewBag.nameTable</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-            <form role="form">
+            <form role="form" @*action="/Home/@ViewBag.actionName"*@ @*method="post"*@>
                 <div class="container">
+                    <div class="row">
+                        <input type="hidden" class="fied_tableName" name="TableName" value="@ViewBag.nameTable" />
+                    </div>
                     <div class="row">
                         <div class="col-4">
                             @foreach (colName it in ViewBag.colName)
                             {
-                                <label>@it.COLUMN_NAME</label> 
+                                <div class="row">
+                                    <label>@it.COLUMN_NAME</label>
+                                </div>
                             }
                         </div>
                         <div class="col-8">
@@ -42,20 +50,39 @@
                             {
                                 for (int i = 0; i < Model.Count; i++)
                                 {
-                                    <input type="text" placeholder="@Model[i]" value="@Model[i]">
+                                <div class="row">
+                                    <input type="text" class="input_vaule" name=@ViewBag.colName[i].COLUMN_NAME placeholder="@Model[i]" value="@Model[i]">
+                                    <input type="hidden" class="input_dataO" value="@Model[i]" />
+                                </div>
                                 }
                             }
                             else
                             {
                                 foreach (colName it in ViewBag.colName)
                                 {
-                                    <input type="text" placeholder="text">
+                                    <div class="row"><input type="text" class="input_vaule" name="@it.COLUMN_NAME" placeholder="text"></div>
+                                    
                                 }
                             }
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success btn-block"> Save</button>
+                @if (ViewBag.actionName == "AddRow")
+                {
+                    <button type="submit" name="@ViewBag.nameTable" class="btn btn-success btn-block ajax_btn_submit" value="Add">Add</button>
+                }
+                else
+                {
+                    if (ViewBag.actionName == "ModifyRow")
+                    {
+                        <button type="submit" name="@ViewBag.nameTable" class="btn btn-success btn-block ajax_btn_submit" value="Save change">Save change</button>
+                    }
+                    else
+                    {
+                        <button type="submit" name="@ViewBag.nameTable" class="btn btn-success btn-block ajax_btn_submit" value="Accept">Accept</button>
+                    }
+                }
+
             </form>
         </div>
     </div>
