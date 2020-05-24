@@ -1,0 +1,109 @@
+﻿
+@using TravarGo.Models.DB;
+
+@model List<string>
+
+
+<style>
+
+    .modal-header, h4, .close {
+        background-color: #5cb85c;
+        color: white !important;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .modal-footer {
+        background-color: #f9f9f9;
+    }
+
+    input {
+        margin-bottom: 8px;
+    }
+</style>
+
+
+<div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4> @ViewBag.nameTable</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+            <form role="form" @*action="/Home/@ViewBag.actionName"*@ @*method="post"*@>
+                <div class="container">
+                    <div class="row">
+                        <input type="hidden" class="fied_tableName" name="TableName" value="@ViewBag.nameTable" />
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            @foreach (colName it in ViewBag.colName)
+                            {
+                                <div class="row">
+                                    <label>@it.COLUMN_NAME</label>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-8">
+                            @if (Model != null)
+                            {
+                                for (int i = 0; i < Model.Count; i++)
+                                {
+                                    <div class="row">
+                                        <input type="text" class="input_vaule" name=@ViewBag.colName[i].COLUMN_NAME placeholder="@Model[i]" value="@Model[i]">
+                                        <input type="hidden" class="input_dataO" value="@Model[i]" />
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                foreach (colName it in ViewBag.colName)
+                                {
+                                    <div class="row"><input type="text" class="input_vaule" name="@it.COLUMN_NAME" placeholder="text"></div>
+
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                @if (ViewBag.actionName == "AddRow")
+                {
+                    <button type="submit" name="@ViewBag.nameTable" class="btn btn-success btn-block ajax_btn_submit" value="Add">Add</button>
+                }
+                else
+                {
+                    if (ViewBag.actionName == "ModifyRow")
+                    {
+                        <button type="submit" name="@ViewBag.nameTable" class="btn btn-success btn-block ajax_btn_submit" value="Save change">Save change</button>
+                    }
+                    else
+                    {
+                        <button type="submit" name="@ViewBag.nameTable" class="btn btn-success btn-block ajax_btn_submit" value="Accept">Accept</button>
+                    }
+                }
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@*<table class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (colName it in ViewBag.colName)
+                {
+                    <th> @it.COLUMN_NAME</th>
+                }
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>*@
+<script src="~/Areas/Admin/Contents/js/homeController.js"></script>
+
