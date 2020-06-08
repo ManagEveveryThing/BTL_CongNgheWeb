@@ -24,9 +24,12 @@ namespace TravarGo.Models.DB
         public virtual DbSet<DSTripTheoTour> DSTripTheoTours { get; set; }
         public virtual DbSet<ElecBill> ElecBills { get; set; }
         public virtual DbSet<HomeStay> HomeStays { get; set; }
+        public virtual DbSet<HotelSevice> HotelSevices { get; set; }
         public virtual DbSet<MyWebSite> MyWebSites { get; set; }
         public virtual DbSet<Nation> Nations { get; set; }
+        public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Taxi> Taxis { get; set; }
         public virtual DbSet<TenCacBang> TenCacBangs { get; set; }
         public virtual DbSet<Tour> Tours { get; set; }
@@ -35,6 +38,7 @@ namespace TravarGo.Models.DB
         public virtual DbSet<WishList> WishLists { get; set; }
         public virtual DbSet<colName> colNames { get; set; }
         public virtual DbSet<DestinationReview> DestinationReviews { get; set; }
+        public virtual DbSet<DestinationTour> DestinationTours { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -207,6 +211,10 @@ namespace TravarGo.Models.DB
                 .WithRequired(e => e.HomeStay)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<HotelSevice>()
+                .Property(e => e.IDHotel)
+                .IsFixedLength();
+
             modelBuilder.Entity<MyWebSite>()
                 .Property(e => e.phoneNum1)
                 .IsFixedLength()
@@ -363,6 +371,11 @@ namespace TravarGo.Models.DB
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DestinationReview>()
+                .Property(e => e.maDD)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DestinationTour>()
                 .Property(e => e.maDD)
                 .IsFixedLength()
                 .IsUnicode(false);
