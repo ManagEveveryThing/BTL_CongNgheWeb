@@ -3,8 +3,7 @@
     ViewBag.Title = "Service";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-@using TravarGo.Models.DB;
-@model List<HotelSevice>
+
 
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Contents/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -19,26 +18,200 @@
 </section>
 
 
+@*<div class="ftco-section-search">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 tabulation-search">
+                    <div class="element-animate">
+                        <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link p-3 active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><span>01</span> Flight</a>
+                            <a class="nav-link p-3" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><span>02</span> Hotel</a>
+                            <a class="nav-link p-3" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><span>03</span> Car Rent</a>
+                        </div>
+                    </div>
+
+                    <div class="tab-content py-5" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="block-17">
+                                <form action="" method="post" class="d-block d-lg-flex">
+                                    <div class="fields d-block d-lg-flex">
+
+                                        <div class="textfield-search one-third"><input type="text" class="form-control" placeholder="Search Location"></div>
+
+                                        <div class="check-in one-third"><input type="text" id="checkin_date" class="form-control" placeholder="Check-in date"></div>
+
+                                        <div class="check-out one-third"><input type="text" id="checkout_date" class="form-control" placeholder="Check-out date"></div>
+                                        <div class="select-wrap one-third">
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">Guest</option>
+                                                <option value="">1</option>
+                                                <option value="">2</option>
+                                                <option value="">3</option>
+                                                <option value="">4+</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="search-submit btn btn-primary" value="Find Flights">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="block-17">
+                                <form action="" method="post" class="d-block d-lg-flex">
+                                    <div class="fields d-block d-lg-flex">
+                                        <div class="textfield-search one-third"><input type="text" class="form-control" placeholder="Search Hotel"></div>
+
+                                        <div class="check-in one-third"><input type="text" id="checkin_date" class="form-control" placeholder="Check-in date"></div>
+
+                                        <div class="check-out one-third"><input type="text" id="checkout_date" class="form-control" placeholder="Check-out date"></div>
+                                        <div class="select-wrap one-third">
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">Guest</option>
+                                                <option value="">1</option>
+                                                <option value="">2</option>
+                                                <option value="">3</option>
+                                                <option value="">4+</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="search-submit btn btn-primary" value="Find Hotels">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <div class="block-17">
+                                <form action="" method="post" class="d-block d-lg-flex">
+                                    <div class="fields d-block d-lg-flex">
+                                        <div class="textfield-search one-third"><input type="text" class="form-control" placeholder="Search Location"></div>
+
+                                        <div class="check-in one-third"><input type="text" id="start_date" class="form-control" placeholder="Start date"></div>
+
+                                        <div class="check-out one-third"><input type="text" id="return_date" class="form-control" placeholder="Return date"></div>
+                                        <div class="select-wrap one-third">
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">Guest</option>
+                                                <option value="">1</option>
+                                                <option value="">2</option>
+                                                <option value="">3</option>
+                                                <option value="">4+</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="search-submit btn btn-primary" value="Find Car">
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
 <section class="ftco-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="row">
-                    @foreach (HotelSevice item in Model)
-                    {
-                        <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
-                            <a href="#" class="block-5" style="background-image: url('/Contents/images/yago/@item.Urlimage');">
-                                <div class="text">
-                                    <span class="price">@item.PriceHotel $</span>
-                                    <h3 class="heading">@item.NameHotel</h3>
-                                    <div class="post-meta">
-                                        <span>@item.AddressHotel</span>
-                                    </div>
-                                    <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>@item.Reviews Reviews</span></p>
+                    <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
+                        <a href="#" class="block-5" style="background-image: url('/Contents/images/yago/hotel-1.jpg');">
+                            <div class="text">
+                                <span class="price">$29/night</span>
+                                <h3 class="heading">Luxe Hotel</h3>
+                                <div class="post-meta">
+                                    <span>Ameeru Ahmed Magu Male’, Maldives</span>
                                 </div>
-                            </a>
-                        </div>
-                    }
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
+                        <a href="#" class="block-5" style="background-image: url('/Contents/images/yago/hotel-2.jpg');">
+                            <div class="text">
+                                <span class="price">$29/night</span>
+                                <h3 class="heading">Luxe Hotel</h3>
+                                <div class="post-meta">
+                                    <span>Ameeru Ahmed Magu Male’, Maldives</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
+                        <a href="#" class="block-5" style="background-image: url('/Contents/images/yago/hotel-3.jpg');">
+                            <div class="text">
+                                <span class="price">$29/night</span>
+                                <h3 class="heading">Luxe Hotel</h3>
+                                <div class="post-meta">
+                                    <span>Ameeru Ahmed Magu Male’, Maldives</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
+                        <a href="#" class="block-5" style="background-image: url('/Contents/images/yago/hotel-4.jpg');">
+                            <div class="text">
+                                <span class="price">$29/night</span>
+                                <h3 class="heading">Luxe Hotel</h3>
+                                <div class="post-meta">
+                                    <span>Ameeru Ahmed Magu Male’, Maldives</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
+                        <a href="#" class="block-5" style="background-image: url('/Contents/images/yago/hotel-5.jpg');">
+                            <div class="text">
+                                <span class="price">$29/night</span>
+                                <h3 class="heading">Luxe Hotel</h3>
+                                <div class="post-meta">
+                                    <span>Ameeru Ahmed Magu Male’, Maldives</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
+                        <a href="#" class="block-5" style="background-image: url('/Contents/images/yago/hotel-6.jpg');">
+                            <div class="text">
+                                <span class="price">$29/night</span>
+                                <h3 class="heading">Luxe Hotel</h3>
+                                <div class="post-meta">
+                                    <span>Ameeru Ahmed Magu Male’, Maldives</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
+                        <a href="#" class="block-5" style="background-image: url('/Contents/images/yago/hotel-7.jpg');">
+                            <div class="text">
+                                <span class="price">$29/night</span>
+                                <h3 class="heading">Luxe Hotel</h3>
+                                <div class="post-meta">
+                                    <span>Ameeru Ahmed Magu Male’, Maldives</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
+                        <a href="#" class="block-5" style="background-image: url('/Contents/images/yago/hotel-8.jpg');">
+                            <div class="text">
+                                <span class="price">$29/night</span>
+                                <h3 class="heading">Luxe Hotel</h3>
+                                <div class="post-meta">
+                                    <span>Ameeru Ahmed Magu Male’, Maldives</span>
+                                </div>
+                                <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>500 reviews</span></p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
                 <div class="row mt-5">
                     <div class="col text-center">

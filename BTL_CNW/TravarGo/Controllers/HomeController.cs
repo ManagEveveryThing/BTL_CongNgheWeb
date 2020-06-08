@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TravarGo.Models;
-using TravarGo.Models.DB;
 
 namespace TravarGo.Controllers
 {
     public class HomeController : Controller
     {
-        private MyDBContext context = new MyDBContext();
-        private Model1 contextTour = new Model1();
         // GET: Home
         public ActionResult Index()
         {
@@ -32,8 +27,7 @@ namespace TravarGo.Controllers
         }
         public ActionResult Destination()
         {
-            var model = contextTour.DestinationTours.Where(x => x.maDD != null).ToList();
-            return View(model);
+            return View();
         }
         public ActionResult Contact()
         {
@@ -41,9 +35,8 @@ namespace TravarGo.Controllers
         }
         public ActionResult Service()
         {
-            var model= context.HotelSevices.Where(x => x.NameHotel != null).ToList();
-            
-            return View(model);
+
+            return View();
         }
         public ActionResult Transport()
         {
