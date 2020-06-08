@@ -33,7 +33,7 @@ namespace TravarGo.Controllers
         public ActionResult Destination()
         {
             var model = contextTour.DestinationTours.Where(x => x.maDD != null).ToList();
-           return View(model);
+            return View(model);
         }
         public ActionResult Contact()
         {

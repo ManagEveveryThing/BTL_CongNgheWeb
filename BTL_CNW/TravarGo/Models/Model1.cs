@@ -1,4 +1,4 @@
-namespace TravarGo.Models.DB
+namespace TravarGo.Models
 {
     using System;
     using System.Data.Entity;
@@ -8,18 +8,17 @@ namespace TravarGo.Models.DB
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model13")
+            : base("name=Model11")
         {
         }
 
-        public virtual DbSet<DestinationTour> DestinationTours { get; set; }
+        public virtual DbSet<HotelSevice> HotelSevices { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DestinationTour>()
-                .Property(e => e.maDD)
-                .IsFixedLength()
-                .IsUnicode(false);
+            modelBuilder.Entity<HotelSevice>()
+                .Property(e => e.IDHotel)
+                .IsFixedLength();
         }
     }
 }
