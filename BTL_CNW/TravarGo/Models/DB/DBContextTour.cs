@@ -13,8 +13,10 @@ namespace TravarGo.Models.DB
         }
 
         public virtual DbSet<Blog> Blogs { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<DetailCart> DetailCarts { get; set; }
         public virtual DbSet<DSDatXe> DSDatXes { get; set; }
         public virtual DbSet<DSKSCanTT> DSKSCanTTs { get; set; }
         public virtual DbSet<DSKSTheoTrip> DSKSTheoTrips { get; set; }
@@ -39,6 +41,9 @@ namespace TravarGo.Models.DB
         public virtual DbSet<colName> colNames { get; set; }
         public virtual DbSet<DestinationReview> DestinationReviews { get; set; }
         public virtual DbSet<DestinationTour> DestinationTours { get; set; }
+        public virtual DbSet<VIEW_detailCart> VIEW_detailCart { get; set; }
+        public virtual DbSet<VIEW_top4Nation> VIEW_top4Nation { get; set; }
+        public virtual DbSet<VIEW_top6DestianationTour> VIEW_top6DestianationTour { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -60,6 +65,20 @@ namespace TravarGo.Models.DB
                 .Property(e => e.pic)
                 .IsFixedLength()
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Cart>()
+                .Property(e => e.cartID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Cart>()
+                .Property(e => e.username)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Cart>()
+                .HasMany(e => e.DetailCarts)
+                .WithRequired(e => e.Cart)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Customer>()
                 .Property(e => e.username)
@@ -87,6 +106,16 @@ namespace TravarGo.Models.DB
                 .HasMany(e => e.WishLists)
                 .WithRequired(e => e.Customer)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<DetailCart>()
+                .Property(e => e.cartID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DetailCart>()
+                .Property(e => e.desTourID)
+                .IsFixedLength()
+                .IsUnicode(false);
 
             modelBuilder.Entity<DSDatXe>()
                 .Property(e => e.maHD)
@@ -305,6 +334,12 @@ namespace TravarGo.Models.DB
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TourDestination>()
+                .HasMany(e => e.DetailCarts)
+                .WithRequired(e => e.TourDestination)
+                .HasForeignKey(e => e.desTourID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TourDestination>()
                 .HasMany(e => e.HomeStays)
                 .WithRequired(e => e.TourDestination)
                 .WillCascadeOnDelete(false);
@@ -376,6 +411,25 @@ namespace TravarGo.Models.DB
                 .IsUnicode(false);
 
             modelBuilder.Entity<DestinationTour>()
+                .Property(e => e.maDD)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VIEW_detailCart>()
+                .Property(e => e.cartID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VIEW_detailCart>()
+                .Property(e => e.username)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VIEW_top4Nation>()
+                .Property(e => e.maQG)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VIEW_top6DestianationTour>()
                 .Property(e => e.maDD)
                 .IsFixedLength()
                 .IsUnicode(false);

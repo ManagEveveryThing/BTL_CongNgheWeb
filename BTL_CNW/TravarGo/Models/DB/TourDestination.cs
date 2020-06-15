@@ -13,6 +13,7 @@ namespace TravarGo.Models.DB
         public TourDestination()
         {
             Blogs = new HashSet<Blog>();
+            DetailCarts = new HashSet<DetailCart>();
             HomeStays = new HashSet<HomeStay>();
             Taxis = new HashSet<Taxi>();
             Trips = new HashSet<Trip>();
@@ -46,8 +47,17 @@ namespace TravarGo.Models.DB
 
         public int? countTaxi { get; set; }
 
+        public int? countWL { get; set; }
+
+        public int? countTour { get; set; }
+
+        public double? Cost { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Blog> Blogs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetailCart> DetailCarts { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HomeStay> HomeStays { get; set; }

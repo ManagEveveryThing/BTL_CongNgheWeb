@@ -12,6 +12,7 @@ namespace TravarGo.Models.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
+            Carts = new HashSet<Cart>();
             ElecBills = new HashSet<ElecBill>();
             WishLists = new HashSet<WishList>();
         }
@@ -43,6 +44,14 @@ namespace TravarGo.Models.DB
 
         [StringLength(100)]
         public string Job { get; set; }
+
+        [StringLength(100)]
+        public string nameQ { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts { get; set; }
+
+        public virtual PhanQuyen PhanQuyen { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ElecBill> ElecBills { get; set; }

@@ -30,7 +30,10 @@ namespace TravarGo.Controllers
         }
         public ActionResult Destination()
         {
-            var model = context.DestinationTours.Where(x => x.maDD != null).ToList();
+            ViewBag.Cart = context.Carts.Where(x => x.username == AccountController.username).ToList();
+            ViewBag.countPageP = (context.DestinationTours.OrderBy(x => x.maDD).Where(x => x.maDD != null).ToList().Count())/9 +1;
+            ViewBag.top4Nation = context.VIEW_top4Nation.Take(4).ToList();
+            var model = context.DestinationTours.Take(9).ToList();
             return View(model);
         }
         public ActionResult Contact()
@@ -58,6 +61,29 @@ namespace TravarGo.Controllers
         public ActionResult Booking()
         {
             return View();
+        }
+        public ActionResult Cart()
+        {
+            if (AccountController.username == null || AccountController.username == "")
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                // gán cart = section hiện tại
+                var cart = (List<DetailCart>)Session["CartSession"];
+                
+                // nếu trống thì tao mới
+                if (cart == null)
+                {
+                    cart = new List<DetailCart>();
+                    
+                }
+                var model = new List<VIEW_detailCart>();
+                if(AccountController.username != null)
+                    model = context.Database.SqlQuery<VIEW_detailCart>("select * from VIEW_detailCart where username = '" + AccountController.username + "'").ToList();
+                return View(model);
+            }
         }
     }
 }

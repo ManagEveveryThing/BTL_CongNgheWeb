@@ -32,7 +32,7 @@
             <h4> @ViewBag.nameTable</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-            <form role="form" @*action="/Home/@ViewBag.actionName"*@ @*method="post"*@>
+            <form role="form" @*action="/Home/@ViewBag.actionName method="post"*@>
                 <div class="container">
                     <div class="row">
                         <input type="hidden" class="fied_tableName" name="TableName" value="@ViewBag.nameTable" />
@@ -51,18 +51,37 @@
                             {
                                 for (int i = 0; i < Model.Count; i++)
                                 {
-                                    <div class="row">
-                                        <input type="text" class="input_vaule" name=@ViewBag.colName[i].COLUMN_NAME placeholder="@Model[i]" value="@Model[i]">
-                                        <input type="hidden" class="input_dataO" value="@Model[i]" />
-                                    </div>
+                                    if (ViewBag.colName[i].COLUMN_NAME == "pic" && ViewBag.actionName != "DeleteRow")
+                                    {
+                                        <div class="row">
+                                            <input type='file' class='uploader' id="imageUploadForm" name="image" multiple="multiple" />
+                                            <input type="hidden" class="input_dataO" value="@Model[i]" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="row">
+                                            <input type="text" class="input_vaule" name=@ViewBag.colName[i].COLUMN_NAME placeholder="@Model[i]" value="@Model[i]">
+                                            <input type="hidden" class="input_dataO" value="@Model[i]" />
+                                        </div>
+                                    }
+
                                 }
                             }
                             else
                             {
                                 foreach (colName it in ViewBag.colName)
                                 {
-                                    <div class="row"><input type="text" class="input_vaule" name="@it.COLUMN_NAME" placeholder="text"></div>
-
+                                    if (it.COLUMN_NAME == "pic")
+                                    {
+                                        <div class="row">
+                                            <input type='file' class='uploader' id="imageUploadForm" name="image" multiple="multiple"  />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="row"><input type="text" class="input_vaule" name="@it.COLUMN_NAME" placeholder="text"></div>
+                                    }
                                 }
                             }
                         </div>

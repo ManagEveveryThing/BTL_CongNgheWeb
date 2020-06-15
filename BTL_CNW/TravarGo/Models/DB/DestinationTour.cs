@@ -37,5 +37,7 @@ namespace TravarGo.Models.DB
 
         [StringLength(100)]
         public string tenTinh { get; set; }
+
+        public int? countTour { get; set; }
     }
 }
