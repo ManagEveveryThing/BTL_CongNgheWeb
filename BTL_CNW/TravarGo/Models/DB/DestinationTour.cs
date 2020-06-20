@@ -39,5 +39,7 @@ namespace TravarGo.Models.DB
         public string tenTinh { get; set; }
 
         public int? countTour { get; set; }
+
+        public double? Cost { get; set; }
     }
 }

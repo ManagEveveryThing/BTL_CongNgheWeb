@@ -48,6 +48,9 @@ namespace TravarGo.Models.DB
         [StringLength(100)]
         public string nameQ { get; set; }
 
+        [StringLength(100)]
+        public string pic { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
 

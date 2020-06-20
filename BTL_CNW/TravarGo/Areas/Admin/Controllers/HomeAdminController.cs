@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TravarGo.Models.DB; 
+using TravarGo.Models.DB;
 
 namespace TravarGo.Areas.Admin.Controllers
 {
@@ -18,10 +18,13 @@ namespace TravarGo.Areas.Admin.Controllers
             return View();
         }
 
-         public ActionResult Table(string username)
+        public ActionResult Table(string username)
         {
+            ViewBag.role = context.PhanQuyens.ToList();
+            ViewBag.user = context.Customers.ToList();
+            ViewBag.topNation = context.Nations.Take(10);
             ViewBag.admin = context.Customers.Find(username);
-            var ads = context.DestinationReviews.ToList(); // view(sql) show ra thông tin về địa điểm
+            var ads = context.DestinationReviews.Take(10).ToList(); // view(sql) show ra thông tin về địa điểm
             var tableNameList = context.TenCacBangs.ToList(); // show ra các table có trong sql
             ViewBag.tableNameList = tableNameList;
             return View(ads);

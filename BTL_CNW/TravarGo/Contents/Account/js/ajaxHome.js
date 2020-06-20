@@ -18,7 +18,7 @@ $(document).ready(function () {
             dataType: 'Json',
             success: function (result) {
                 if (result.mes == 1) {
-                    window.location.href = "/Home/Index";
+                    window.location.href = "/Home/Index/"+data.user;
                 }
                 else {
                     if (result.mes == 2) {

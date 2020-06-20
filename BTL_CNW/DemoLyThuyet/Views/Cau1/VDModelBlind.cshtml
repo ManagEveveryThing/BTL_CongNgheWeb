@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+@model DemoLyThuyet.Models.Cau1_Account
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VDModelBlind</title>
+</head>
+<body>
+    @using (Html.BeginForm("VDModelBlind","Cau1")) { 
+        @Html.TextBoxFor(x => x.user)
+        <br />
+        @Html.TextBoxFor(x => x.pass)
+        <input type="submit"/>
+    }
+</body>
+</html>

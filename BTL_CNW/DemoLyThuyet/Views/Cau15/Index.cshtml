@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Share/_Layout_Cau14.cshtml";
+}
+
+@section menu
+        {
+    @HelperCode.PrintList(new string[] { "1", "2", "3" })
+}
+@section menuEnd
+        {
+    @HelperCode.PrintList(new string[] { "Shop", "Aoubt us" })
+}
+<h2>Index</h2>
+

@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VDThamSo</title>
+</head>
+<body>
+    <h1> Hello @Session["name"]</h1>
+    @using (Html.BeginForm()) {
+        <div>@Html.TextBox("para1") </div>
+        <div>@Html.TextBox("para2") </div>
+        <input type="submit" value="Go Test"/>
+    }
+    <div> 
+    </div>
+</body>
+</html>

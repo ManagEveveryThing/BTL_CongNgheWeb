@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+@helper PrintList(string[] items)
+{
+    <ol>
+        @foreach (string item in items)
+        {
+            <li>@item</li>
+        }
+    </ol>
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @PrintList(new string[] { "1", "2", "3" })  
+        @HelperCode.PrintList(new string[] { "1", "2", "3" })
+    </div>
+</body>
+</html>

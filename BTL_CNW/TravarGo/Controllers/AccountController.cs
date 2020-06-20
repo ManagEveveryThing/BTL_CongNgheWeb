@@ -23,6 +23,11 @@ namespace TravarGo.Controllers
         {
             return View();
         }
+        public ActionResult Logout()
+        {
+            username = null;
+            return RedirectToAction("Index","Home");
+        }
 
         [HttpPost]
         public JsonResult CheckAccount(string user, string pass)

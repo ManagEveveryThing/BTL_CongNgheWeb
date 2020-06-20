@@ -15,7 +15,6 @@
     <tbody>
         @{ switch (ViewBag.tableName as string)
             {
-
                 case "Blog":
                     foreach (Blog it in Model as List<Blog>)
                     {
@@ -65,6 +64,33 @@
                         <td>  @it.note </td>
                         <td>  @it.Feedback</td>
                         <td>  @it.Job</td>
+                        <td>  @it.nameQ</td>
+                        <td>  @it.pic</td>
+                        <td>
+                            <div class="table-data-feature">
+                                <button class="item ajax_editRow" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </button>
+                                <button class="item ajax_deleteRow" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                    break;
+                case "Category":
+                    foreach (Category it in Model as List<Category>)
+                    {
+                    <tr>
+                        <td>
+                            <label class="au-checkbox">
+                                <input type="checkbox">
+                                <span class="au-checkmark"></span>
+                            </label>
+                        </td>
+                        <td class="key1">  @it.tenDanhMuc </td>
+                        <td>  @it.num </td>
                         <td>
                             <div class="table-data-feature">
                                 <button class="item ajax_editRow" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
@@ -458,6 +484,7 @@
                             <td>  @it.pic </td>
                             <td>  @it.note </td>
                             <td>  @it.moTa</td>
+                            <td>  @it.Cost</td>
                             <td>
                                 <div class="table-data-feature">
                                     <button class="item ajax_editRow" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
@@ -486,9 +513,13 @@
                             <td>  @it.tenDD </td>
                             <td>  @it.pic </td>
                             <td>  @it.note </td>
+                            <td>  @it.moTa </td>
                             <td>  @it.near </td>
                             <td>  @it.countHomeStay </td>
                             <td>  @it.countTaxi </td>
+                            <td>  @it.countWL </td>
+                            <td>  @it.countTour </td>
+                            <td>  @it.Cost </td>
                             <td>
                                 <div class="table-data-feature">
                                     <button class="item ajax_editRow" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
@@ -562,4 +593,22 @@
 
     </tbody>
 </table>
+
+<div class="row mt-5 pading_contain">
+    <div class="col text-center" style="margin-left:50%;">
+        <div class="block-27" >
+            <ul class="pagination">
+                <li class="page-item"><a class="pre_page1 page-link">&lt;</a></li>
+                <li class="active page-item numb_page" id="1"><span class="page-link">1</span></li>
+                @for (int i = 2; i <= ViewBag.countPage; i++)
+                {
+                    <li class="page-item page-item numb_page" id="@i"><span class="page-link">@i</span></li>
+                }
+                <li class="page-item"><a class="next_page1 page-link">&gt;</a></li>
+                <li hidden><span class="sun_page">@(ViewBag.countPage - 1)</span></li>
+                <li hidden ><span class="cur_page">@(ViewBag.curPage)</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
 <script src="~/Areas/Admin/Contents/js/homeController.js"></script>

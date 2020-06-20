@@ -12,7 +12,7 @@ namespace TravarGo.Areas.Admin.Controllers
     {
         // GET: Admin/TableTab
         DBContextTour context = new DBContextTour();
-
+        int curPage = 1;
         [ChildActionOnly]
         public ActionResult _PartialPage_TableData(string nametable)
         {
@@ -41,88 +41,115 @@ namespace TravarGo.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult getTableData(string tableName)
+        public void changeRole(string username, string role)
         {
+            var user = context.Customers.Find(username);
+            user.nameQ = role;
+            context.SaveChanges();
+        }
+
+        [HttpGet]
+        public ActionResult getTableData(string tableName,string Curpage)
+        {
+            int page;
+            
+            if (Curpage==null)
+            {
+                page = 1;
+            }
+            else
+                page = Int32.Parse(Curpage);
             object data;
             int count = 0;
-            ViewBag.colName = context.Database.SqlQuery<colName>("select * from colName where TABLE_NAME = '" + tableName + "'").ToList();
+            if(tableName == "Category")
+                ViewBag.colName = context.Database.SqlQuery<colName>("select * from colName where TABLE_NAME = 'Categories'").ToList();
+            else
+                ViewBag.colName = context.Database.SqlQuery<colName>("select * from colName where TABLE_NAME = '" + tableName + "'").ToList();
             switch (tableName)
             {
                 case "Blog":
-                    data = context.Database.SqlQuery<Blog>("select * from " + tableName).ToList();
-                    count = (data as List<Blog>).Count;
+                    data = context.Database.SqlQuery<Blog>("select * from " + tableName).Skip((page-1)*5).Take(5).ToList();
+                    count = context.Database.SqlQuery<Blog>("select * from " + tableName).Count();
+                    break;
+                case "Category":
+                    data = context.Database.SqlQuery<Category>("select * from Categories").Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<Category>("select * from Categories").Count();
                     break;
                 case "Customer":
-                    data = context.Database.SqlQuery<Customer>("select * from " + tableName).ToList();
-                    count = (data as List<Customer>).Count;
+                    data = context.Database.SqlQuery<Customer>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<Customer>("select * from " + tableName).Count();
                     break;
                 case "DestinationReview":
-                    data = context.Database.SqlQuery<DestinationReview>("select * from " + tableName).ToList();
-                    count = (data as List<DestinationReview>).Count;
+                    data = context.Database.SqlQuery<DestinationReview>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<DestinationReview>("select * from " + tableName).Count();
                     break;
                 case "DSDatXe":
-                    data = context.Database.SqlQuery<DSDatXe>("select * from " + tableName).ToList();
-                    count = (data as List<DSDatXe>).Count;
+                    data = context.Database.SqlQuery<DSDatXe>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count =context.Database.SqlQuery<DSDatXe>("select * from " + tableName).Count();
                     break;
                 case "DSKSCanTT":
-                    data = context.Database.SqlQuery<DSKSCanTT>("select * from " + tableName).ToList();
-                    count = (data as List<DSKSCanTT>).Count;
+                    data = context.Database.SqlQuery<DSKSCanTT>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<DSKSCanTT>("select * from " + tableName).Count();
                     break;
                 case "DSKSTheoTrip":
-                    data = context.Database.SqlQuery<DSKSTheoTrip>("select * from " + tableName).ToList();
-                    count = (data as List<DSKSTheoTrip>).Count;
+                    data = context.Database.SqlQuery<DSKSTheoTrip>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<DSKSTheoTrip>("select * from " + tableName).Count();
                     break;
                 case "DSKSTrongWL":
-                    data = context.Database.SqlQuery<DSKSTrongWL>("select * from " + tableName).ToList();
-                    count = (data as List<DSKSTrongWL>).Count;
+                    data = context.Database.SqlQuery<DSKSTrongWL>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<DSKSTrongWL>("select * from Categories").Count();
                     break;
                 case "DSTourCanTT":
-                    data = context.Database.SqlQuery<DSTourCanTT>("select * from " + tableName).ToList();
-                    count = (data as List<DSTourCanTT>).Count;
+                    data = context.Database.SqlQuery<DSTourCanTT>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<DSTourCanTT>("select * from " + tableName).Count();
                     break;
                 case "DSTourTrongWL":
-                    data = context.Database.SqlQuery<DSTourTrongWL>("select * from " + tableName).ToList();
-                    count = (data as List<DSTourTrongWL>).Count;
+                    data = context.Database.SqlQuery<DSTourTrongWL>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<DSTourTrongWL>("select * from " + tableName).Count();
                     break;
                 case "DSTripTheoTour":
-                    data = context.Database.SqlQuery<DSTripTheoTour>("select * from " + tableName).ToList();
-                    count = (data as List<DSTripTheoTour>).Count;
+                    data = context.Database.SqlQuery<DSTripTheoTour>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<DSTripTheoTour>("select * from " + tableName).Count();
                     break;
                 case "ElecBill":
-                    data = context.Database.SqlQuery<ElecBill>("select * from " + tableName).ToList();
-                    count = (data as List<ElecBill>).Count;
+                    data = context.Database.SqlQuery<ElecBill>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<ElecBill>("select * from " + tableName).Count();
                     break;
                 case "HomeStay":
-                    data = context.Database.SqlQuery<HomeStay>("select * from " + tableName).ToList();
-                    count = (data as List<HomeStay>).Count;
+                    data = context.Database.SqlQuery<HomeStay>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<HomeStay>("select * from " + tableName).Count();
+                    break;
+                case "MyWebSite":
+                    data = context.Database.SqlQuery<MyWebSite>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<MyWebSite>("select * from " + tableName).Count();
                     break;
                 case "Nation":
-                    data = context.Database.SqlQuery<Nation>("select * from " + tableName).ToList();
-                    count = (data as List<Nation>).Count;
+                    data = context.Database.SqlQuery<Nation>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<Nation>("select * from " + tableName).Count();
                     break;
                 case "Province":
-                    data = context.Database.SqlQuery<Province>("select * from " + tableName).ToList();
-                    count = (data as List<Province>).Count;
+                    data = context.Database.SqlQuery<Province>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<Province>("select * from " + tableName).Count();
                     break;
                 case "Taxi":
-                    data = context.Database.SqlQuery<Taxi>("select * from " + tableName).ToList();
-                    count = (data as List<Taxi>).Count;
+                    data = context.Database.SqlQuery<Taxi>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<Taxi>("select * from " + tableName).Count();
                     break;
                 case "Tour":
-                    data = context.Database.SqlQuery<Tour>("select * from " + tableName).ToList();
-                    count = (data as List<Tour>).Count;
+                    data = context.Database.SqlQuery<Tour>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<Tour>("select * from " + tableName).Count();
                     break;
                 case "TourDestination":
-                    data = context.Database.SqlQuery<TourDestination>("select * from " + tableName).ToList();
-                    count = (data as List<TourDestination>).Count;
+                    data = context.Database.SqlQuery<TourDestination>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<TourDestination>("select * from " + tableName).Count();
                     break;
                 case "Trip":
-                    data = context.Database.SqlQuery<Trip>("select * from " + tableName).ToList();
-                    count = (data as List<Trip>).Count;
+                    data = context.Database.SqlQuery<Trip>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<Trip>("select * from " + tableName).Count();
                     break;
                 case "WishList":
-                    data = context.Database.SqlQuery<WishList>("select * from " + tableName).ToList();
-                    count = (data as List<WishList>).Count;
+                    data = context.Database.SqlQuery<WishList>("select * from " + tableName).Skip((page - 1) * 5).Take(5).ToList();
+                    count = context.Database.SqlQuery<WishList>("select * from " + tableName).Count();
                     break;
                 default:
                     data = null;
@@ -130,6 +157,8 @@ namespace TravarGo.Areas.Admin.Controllers
             }
             ViewBag.tableName = tableName;
             ViewBag.countRow = count;
+            ViewBag.countPage = count / 5 + 1;
+            ViewBag.curPage = curPage;
             return PartialView("_TableDB", data);
         }
 

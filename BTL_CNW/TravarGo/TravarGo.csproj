@@ -593,7 +593,9 @@
     <Compile Include="Models\DB\DBContextTour.cs" />
     <Compile Include="Models\DB\DestinationReview.cs" />
     <Compile Include="Models\DB\DestinationTour.cs" />
+    <Compile Include="Models\DB\detailBlog.cs" />
     <Compile Include="Models\DB\DetailCart.cs" />
+    <Compile Include="Models\DB\detailService.cs" />
     <Compile Include="Models\DB\DSDatXe.cs" />
     <Compile Include="Models\DB\DSKSCanTT.cs" />
     <Compile Include="Models\DB\DSKSTheoTrip.cs" />
@@ -603,7 +605,6 @@
     <Compile Include="Models\DB\DSTripTheoTour.cs" />
     <Compile Include="Models\DB\ElecBill.cs" />
     <Compile Include="Models\DB\HomeStay.cs" />
-    <Compile Include="Models\DB\HotelSevice.cs" />
     <Compile Include="Models\DB\MyWebSite.cs" />
     <Compile Include="Models\DB\Nation.cs" />
     <Compile Include="Models\DB\PhanQuyen.cs" />
@@ -888,6 +889,9 @@
     <Content Include="Views\Shared\_LayoutPage_Account.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Shared\_PartialPage_9product.cshtml" />
+    <Content Include="Views\Shared\_PartialPage_ModalProduct.cshtml" />
+    <Content Include="Views\Shared\_PartialPage_CartProduct.cshtml" />
+    <Content Include="Views\Shared\_PartialPage_ResultSearch.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -899,7 +903,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\TableTab\" />
-    <Folder Include="Areas\Admin\Views\UploadFile\" />
     <Folder Include="Contents\images\Upload\" />
     <Folder Include="Views\Cart\" />
     <Folder Include="Views\Destiantion\" />

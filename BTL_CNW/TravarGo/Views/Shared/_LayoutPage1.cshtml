@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    TravarGo.Models.DB.Customer customer = ViewBag.acc;
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -48,7 +52,6 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="oi oi-menu"></span> Menu
                 </button>
-
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">@Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })</li>
@@ -56,12 +59,12 @@
                         <li class="nav-item ">
                             @Html.ActionLink("Service", "Service", "Home", new { @class = "nav-link" })
                             @*<ul class="dropdown-divider">
-                                    <li class="dropdown-menu">
-                                        @Html.ActionLink("Transport", "Index", "Home", new { @class = "dropdown-item" })
-                                        @Html.ActionLink("Accommodation", "Index", "Home", new { @class = "dropdown-item" })
-                                        @Html.ActionLink("Tour", "Tour", "Home", new { @class = "dropdown-item" })
-                                    </li>
-                                </ul>*@
+                            <li class="dropdown-menu">
+                                @Html.ActionLink("Transport", "Index", "Home", new { @class = "dropdown-item" })
+                                @Html.ActionLink("Accommodation", "Index", "Home", new { @class = "dropdown-item" })
+                                @Html.ActionLink("Tour", "Tour", "Home", new { @class = "dropdown-item" })
+                            </li>
+                        </ul>*@
                         </li>
                         <li class="nav-item">@Html.ActionLink("Destination", "Destination", "Home", new { @class = "nav-link" })</li>
                         <li class="nav-item">@Html.ActionLink("Blog", "Blog", "Home", new { @class = "nav-link" })</li>
@@ -69,8 +72,36 @@
                         <li class="nav-item cta">@Html.ActionLink("Book Now", "Cart", "Home", new { @class = "nav-link" })</li>
 
                     </ul>
+
                 </div>
             </div>
+            @if (customer == null)
+            {
+                <div class="dropdown" style="margin-right:30px; background-color:none">
+                    <a class="nav-link">
+                        Account
+                        @*<span class="caret"></span>*@
+                    </a>
+                    <ul class="dropdown-menu" style="opacity: 0.3">
+                        <li class="dropdown-item nav-item"><a href="~/Account/Login">LogIn</a></li>
+                        <li class="dropdown-item"><a href="~/Account/Register">Register</a></li>
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <div class="dropdown" style="margin-right:30px; background-color:none">
+                    <a class="nav-link">
+                        @customer.tenKH @customer.hoKH
+                        @*<span class="caret"></span>*@
+                    </a>
+                    <ul class="dropdown-menu" style="opacity: 0.3">
+                        <li class="dropdown-item nav-item"><a href="#">Chage Pass</a></li>
+                        <li class="dropdown-item"><a href="@Url.Action("Logout","Account")">Logout</a></li>
+                    </ul>
+                </div>
+            }
+
         </nav>
         @RenderBody()
     </div>

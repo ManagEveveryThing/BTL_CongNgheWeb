@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <span>ViewData:</span>
+    <br />
+    <span>ViewData1: @ViewData["paraVD1"]</span>
+    <br />
+    <p> nếu ko định kiểu trước cho n thì không thể lấy được các thuộc tính bên trong của nó vd: ViewData["paraVD2"].pass </p>
+    @*@ViewData["paraVD2"].pass*@
+    @{
+        var data2 = ViewData["paraVD2"] as DemoLyThuyet.Models.Cau1_Account;
+    }
+    <span>ViewData2: @data2.user : @data2.pass</span>
+    <br />
+    <p> trong khi viewbag sẽ linh hoạt hơn</p>
+    <span>ViewBag:</span>
+    <br />
+    <span>ViewBag: @ViewBag.paraVB1</span>
+    <br />
+    <p> nếu ko định kiểu trước cho n thì không thể lấy được các thuộc tính bên trong của nó vd: ViewData["paraVD2"].pass </p>
+    @*@ViewData["paraVD2"].pass*@
+    <span>ViewBag: @ViewBag.paraVB2.user : @ViewBag.paraVB2.pass</span>
+    <br />
+</body>
+</html>

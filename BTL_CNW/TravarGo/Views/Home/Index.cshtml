@@ -2,7 +2,13 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var top4 = ViewBag.top4Nation;
+    var top6 = ViewBag.top6DT;
+    List<Cart> cartF = ViewBag.Cart;
+    var fb=ViewBag.FeedBack;
+    var blogs3 = ViewBag.top3Blog;
 }
+@using TravarGo.Models.DB;
 
 
 
@@ -219,50 +225,23 @@
     <div class="container">
         <div class="row justify-content-center pb-4">
             <div class="col-md-12 heading-section text-center ftco-animate">
-                <h2 class="mb-4">Best Place Destination</h2>
+                <h2 class="mb-4">Best Nation</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 ftco-animate">
-                <div class="project-destination">
-                    <a href="#" class="img" style="background-image: url(/Contents/images/place-1.jpg);">
-                        <div class="text">
-                            @*<h3>@ViewBag.diaDiemDauTien.tenQG</h3>*@
-                            <span>8 Tours</span>
-                        </div>
-                    </a>
+            @foreach (VIEW_top4Nation item in top4)
+            {
+                <div class="col-md-3 ftco-animate">
+                    <div class="project-destination">
+                        <a href="#" class="img" style="background-image: url(/Contents/images/@item.pic);">
+                            <div class="text">
+                                <h3>@item.tenQG</h3>
+                                <span>@item.countTour Tours</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3 ftco-animate">
-                <div class="project-destination">
-                    <a href="#" class="img" style="background-image: url(/Contents/images/place-2.jpg);">
-                        <div class="text">
-                            <h3>Canada</h3>
-                            <span>2 Tours</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 ftco-animate">
-                <div class="project-destination">
-                    <a href="#" class="img" style="background-image: url(/Contents/images/place-3.jpg);">
-                        <div class="text">
-                            <h3>Thailand</h3>
-                            <span>5 Tours</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 ftco-animate">
-                <div class="project-destination">
-                    <a href="#" class="img" style="background-image: url(/Contents/images/place-4.jpg);">
-                        <div class="text">
-                            <h3>Autralia</h3>
-                            <span>5 Tours</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
@@ -275,104 +254,30 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 ftco-animate">
-                <div class="project-wrap">
-                    <a href="#" class="img" style="background-image: url(/Contents/images/destination-1.jpg);"></a>
-                    <div class="text p-4">
-                        <span class="price">$300/person</span>
-                        <span class="days">8 Tour gone</span>
-                        <h3><a href="#">Bali, Indonesia</a></h3>
-                        <p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-mountains"></span>Near Mountain</li>
-                        </ul>
+            @foreach (DestinationTour item in top6)
+            {
+                <div class="col-md-4 ftco-animate fadeInUp ftco-animated product_contain">
+                    <div class="project-wrap">
+                        <a href="#" class="img" style="background-image: url(/Contents/images/TourDestianton/@item.pic);"></a>
+                        <div class="text p-4">
+                            <span hidden class="ID_Tour">@item.maDD</span>
+                            <span class="price">$@item.Cost/Person</span>
+                            <span class="days">@item.countTour Tours</span>
+                            <h3><a href="#">@item.tenDD</a></h3>
+                            <p class="location"><span class="ion-ios-map"></span> @item.tenTinh, @item.tenQG</p>
+                            <ul>
+                                <!--  <li><span class="flaticon-shower"></span>2</li>
+                            <li><span class="flaticon-king-size"></span>3</li>-->
+                                <li><span class="flaticon-mountains"></span>@item.near</li>
+                                <li><span></span></li>
+                            </ul>
+                            <input type="button" class="form-control btn btn-primary add_toCart" value="Add Cart" />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="project-wrap">
-                    <a href="#" class="img" style="background-image: url(/Contents/images/destination-2.jpg);"></a>
-                    <div class="text p-4">
-                        <span class="price">$300/person</span>
-                        <span class="days">10 Days Tour</span>
-                        <h3><a href="#">Bali, Indonesia</a></h3>
-                        <p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="project-wrap">
-                    <a href="#" class="img" style="background-image: url(/Contents/images/destination-3.jpg);"></a>
-                    <div class="text p-4">
-                        <span class="price">$300/person</span>
-                        <span class="days">7 Days Tour</span>
-                        <h3><a href="#">Bali, Indonesia</a></h3>
-                        <p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 ftco-animate">
-                <div class="project-wrap">
-                    <a href="#" class="img" style="background-image: url(/Contents/images/destination-4.jpg);"></a>
-                    <div class="text p-4">
-                        <span class="price">$300/person</span>
-                        <span class="days">8 Days Tour</span>
-                        <h3><a href="#">Bali, Indonesia</a></h3>
-                        <p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="project-wrap">
-                    <a href="#" class="img" style="background-image: url(/Contents/images/destination-5.jpg);"></a>
-                    <div class="text p-4">
-                        <span class="price">$300/person</span>
-                        <span class="days">10 Days Tour</span>
-                        <h3><a href="#">Bali, Indonesia</a></h3>
-                        <p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="project-wrap">
-                    <a href="#" class="img" style="background-image: url(/Contents/images/destination-6.jpg);"></a>
-                    <div class="text p-4">
-                        <span class="price">$300/person</span>
-                        <span class="days">7 Days Tour</span>
-                        <h3><a href="#">Bali, Indonesia</a></h3>
-                        <p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
+        <div class="modal fade" id="myModal" role="dialog"> </div>
     </div>
 </section>
 
@@ -386,82 +291,28 @@
         <div class="row ftco-animate">
             <div class="col-md-12">
                 <div class="carousel-testimony owl-carousel ftco-owl">
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="text">
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(/Contents/images/person_1.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
+                    @foreach(Customer item in fb)
+                    {
+                        <div class="item">
+                            <div class="testimony-wrap py-4">
+                                <div class="text">
+                                    <p class="mb-4">@item.Feedback</p>
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-img" style="background-image: url(/Contents/images/@item.pic"></div>
+                                        <div class="pl-3">
+                                            <p class="name">@item.tenKH @item.hoKH</p>
+                                            <span class="position">@item.Job</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="text">
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(/Contents/images/person_2.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="text">
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(/Contents/images/person_3.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="text">
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(/Contents/images/person_1.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="text">
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(/Contents/images/person_2.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 
 <section class="ftco-section">
     <div class="container">
@@ -471,63 +322,30 @@
             </div>
         </div>
         <div class="row d-flex">
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('/Contents/images/image_1.jpg');">
-                    </a>
-                    <div class="text mt-3 float-right d-block">
-                        <div class="d-flex align-items-center mb-4 topp">
-                            <div class="one">
-                                <span class="day">21</span>
+            @foreach (detailBlog item in blogs3)
+            {
+                <div class="col-md-4 d-flex ftco-animate">
+                    <div class="blog-entry justify-content-end">
+                        <a href="blog-single.html" class="block-20" style="background-image: url('/Contents/images/@item.pic');">
+                        </a>
+                        <div class="text mt-3 float-right d-block">
+                            <div class="d-flex align-items-center mb-4 topp">
+                                <div class="one">
+                                    <span class="day">21</span>
+                                </div>
+                                <div class="two">
+                                    <span class="yr">2019</span>
+                                    <span class="mos">@item.tenDD</span>
+                                </div>
                             </div>
-                            <div class="two">
-                                <span class="yr">2019</span>
-                                <span class="mos">August</span>
-                            </div>
+                            <h3 class="heading"><a href="#">@item.header</a></h3>
+                            <p>@item.content</p>
                         </div>
-                        <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('/Contents/images/image_2.jpg');">
-                    </a>
-                    <div class="text mt-3 float-right d-block">
-                        <div class="d-flex align-items-center mb-4 topp">
-                            <div class="one">
-                                <span class="day">21</span>
-                            </div>
-                            <div class="two">
-                                <span class="yr">2019</span>
-                                <span class="mos">August</span>
-                            </div>
-                        </div>
-                        <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('/Contents/images/image_3.jpg');">
-                    </a>
-                    <div class="text mt-3 float-right d-block">
-                        <div class="d-flex align-items-center mb-4 topp">
-                            <div class="one">
-                                <span class="day">21</span>
-                            </div>
-                            <div class="two">
-                                <span class="yr">2019</span>
-                                <span class="mos">August</span>
-                            </div>
-                        </div>
-                        <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                    </div>
-                </div>
-            </div>
+            }
+
+
         </div>
     </div>
 </section>

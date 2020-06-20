@@ -9,6 +9,7 @@ namespace TravarGo.Models.DB
     public partial class VIEW_detailCart
     {
         [Key]
+        [Column(Order = 0)]
         [StringLength(10)]
         public string cartID { get; set; }
 
@@ -26,5 +27,10 @@ namespace TravarGo.Models.DB
         public string pic { get; set; }
 
         public double? Cost { get; set; }
+
+        [Key]
+        [Column(Order = 1)]
+        [StringLength(10)]
+        public string maDD { get; set; }
     }
 }

@@ -1,0 +1,9 @@
+﻿@helper PrintList(string[] items)
+{
+	<ol>
+		@foreach (string item in items)
+		{
+			<li>@item</li>
+		}
+	</ol>
+}

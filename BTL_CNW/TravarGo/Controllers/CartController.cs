@@ -62,9 +62,13 @@ namespace TravarGo.Controllers
 
             }
         }
-        public void RemoveOneProduct(string idDT, string idCart)
+        [HttpGet]
+        public ActionResult RemoveOneProduct(string idDT, string idCart)
         {
             DetailCart product = db.DetailCarts.Find(idCart, idDT);
+            var cartS = (List<DetailCart>)Session["CartSession"];
+            if (cartS != null && cartS.Count() > 0)
+                cartS.Remove(product);
             if (product != null)
             {
                 try
@@ -78,9 +82,49 @@ namespace TravarGo.Controllers
 
                 }
                 //
-                var cartS = (List<DetailCart>)Session["CartSession"];
-                cartS.Remove(product);
+                
             }
+            var model = new List<VIEW_detailCart>();
+            if (AccountController.username != null)
+                model = db.Database.SqlQuery<VIEW_detailCart>("select * from VIEW_detailCart where username = '" + AccountController.username + "'").ToList();
+            else
+                return RedirectToAction("Login", "Account");
+            return PartialView("_PartialPage_CartProduct", model);
+        }
+        [HttpGet]
+        public ActionResult RemoveAllProduct(string idCart)
+        {
+            List<DetailCart> product = db.DetailCarts.Where(x=>x.cartID == idCart).ToList();
+            foreach (DetailCart item in product)
+            {
+                var cartS = (List<DetailCart>)Session["CartSession"];
+                if(cartS != null && cartS.Count() >0)
+                    cartS.Remove(item);
+            }
+            if (product != null)
+            {
+                try
+                {
+                    foreach(DetailCart item in product)
+                    {
+                        db.DetailCarts.Attach(item);
+                        db.DetailCarts.Remove(item);
+                    }
+                    db.SaveChanges();
+                }
+                catch
+                {
+
+                }
+                //
+                
+            }
+            var model = new List<VIEW_detailCart>();
+            if (AccountController.username != null)
+                model = db.Database.SqlQuery<VIEW_detailCart>("select * from VIEW_detailCart where username = '" + AccountController.username + "'").ToList();
+            else
+                return RedirectToAction("Login", "Account");
+            return PartialView("_PartialPage_CartProduct", model);
         }
     }
 }

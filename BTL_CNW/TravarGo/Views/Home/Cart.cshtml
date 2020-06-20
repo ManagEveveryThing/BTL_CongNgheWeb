@@ -250,6 +250,7 @@
 	display: block;
 	text-align: center;
 }
+
 </style>
 
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Contents/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
@@ -257,8 +258,8 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate pb-5 text-center">
-                <h1 class="mb-3 bread">Places to Travel</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Destination <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-3 bread">Cart</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="#">Account <i class="ion-ios-arrow-forward"></i></a></span> <span>Cart <i class="ion-ios-arrow-forward"></i></span></p>
             </div>
         </div>
     </div>
@@ -270,6 +271,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="cart-table">
+					<span hidden class="IDcart">@Model[0].cartID</span>
                     <table>
                         <thead>
                             <tr>
@@ -278,15 +280,16 @@
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Total</th>
-                                <th><i class="ti-close"></i></th>
+                                <th class="x_deleteAllCart"><i class="ti-close"></i></th>
                             </tr>
                         </thead>
-						<tbody>
+						<tbody class="contain_product_cart">
 							@if (Model.Count() > 0)
 							{
 								foreach (VIEW_detailCart item in Model)
 								{
 									<tr>
+										<td hidden class="ID_Tour">@item.maDD </td>
 										<td class="cart-pic first-row"><img src="~/Contents/images/TourDestianton/@item.pic" alt=""></td>
 										<td class="cart-title first-row">
 											<h5>@item.tenDD</h5>
@@ -299,8 +302,8 @@
 												</div>
 											</div>
 										</td>
-										<td class="total-price first-row">$60.00</td>
-										<td class="close-td first-row"><i class="ti-close"></i></td>
+										<td class="total-price first-row">@item.Cost</td>
+										<td class="close-td first-row x_deleteOnCart"><i class="ti-close"></i></td>
 									</tr>
 								}
 							}

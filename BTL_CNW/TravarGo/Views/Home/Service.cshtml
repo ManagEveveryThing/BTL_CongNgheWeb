@@ -2,9 +2,10 @@
 @{
     ViewBag.Title = "Service";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    List<Category> cate = ViewBag.cate;
 }
 @using TravarGo.Models.DB;
-@model List<HotelSevice>
+@model List<detailService>
 
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Contents/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -24,17 +25,17 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="row">
-                    @foreach (HotelSevice item in Model)
+                    @foreach (detailService item in Model)
                     {
                         <div class="col-md-6 col-lg-6 mb-4 ftco-animate">
-                            <a href="#" class="block-5" style="background-image: url('/Contents/images/yago/@item.Urlimage');">
+                            <a href="#" class="block-5" style="background-image: url('/Contents/images/TourDestination/@item.pic');">
                                 <div class="text">
-                                    <span class="price">@item.PriceHotel $</span>
-                                    <h3 class="heading">@item.NameHotel</h3>
+                                    <span class="price">@item.costPerNight $/pernight</span>
+                                    <h3 class="heading">@item.tenKS</h3>
                                     <div class="post-meta">
-                                        <span>@item.AddressHotel</span>
+                                        <span>@item.tenDD, @item.tenTinh, @item.tenQG</span>
                                     </div>
-                                    <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>@item.Reviews Reviews</span></p>
+                                    <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> <span>@item.numReview Reviews</span></p>
                                 </div>
                             </a>
                         </div>
@@ -46,10 +47,10 @@
                             <ul>
                                 <li><a href="#">&lt;</a></li>
                                 <li class="active"><span>1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
+                                @for (int i = 2; i < ViewBag.countHS; i++)
+                                {
+                                    <li><a href="#">@i</a></li>
+                                }
                                 <li><a href="#">&gt;</a></li>
                             </ul>
                         </div>
@@ -69,25 +70,8 @@
                                     <div class="textfield-search col-sm-12 group mb-3">
                                         <input type="text" class="form-control" placeholder="Search Location">
                                     </div>
-
-                                    <div class="check-in col-sm-12 group mb-3">
-                                        <input type="text" id="checkin_date" class="form-control" placeholder="Check-in date">
-                                    </div>
-
-                                    <div class="check-out col-sm-12 group mb-3">
-                                        <input type="text" id="checkout_date" class="form-control" placeholder="Check-out date">
-                                    </div>
-                                    <div class="select-wrap col-sm-12 group mb-3">
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Guest</option>
-                                            <option value="">1</option>
-                                            <option value="">2</option>
-                                            <option value="">3</option>
-                                            <option value="">4+</option>
-                                        </select>
-                                    </div>
                                     <div class="col-sm-12 group mb-3">
-                                        <input type="submit" class="search-submit btn btn-primary" value="Find Flights">
+                                        <input type="submit" class="search-submit btn btn-primary" value="Find HomeStay">
                                     </div>
                                 </div>
                             </div>
@@ -98,28 +82,12 @@
                 <div class="sidebar-box ftco-animate">
                     <div class="categories">
                         <h3>Categories</h3>
-                        <li><a href="#">Tours <span>(12)</span></a></li>
-                        <li><a href="#">Hotels <span>(22)</span></a></li>
-                        <li><a href="#">Cruises <span>(37)</span></a></li>
-                        <li><a href="#">Restaurant <span>(42)</span></a></li>
-                        <li><a href="#">Destination <span>(14)</span></a></li>
+                        @foreach (Category item in cate)
+                        {
+                            <li><a href="#">@item.tenDanhMuc <span>(@item.num)</span></a></li>
+                        }
                     </div>
                 </div>
-
-                <div class="sidebar-box ftco-animate">
-                    <h3>Tag Cloud</h3>
-                    <div class="tagcloud">
-                        <a href="#" class="tag-cloud-link">Life</a>
-                        <a href="#" class="tag-cloud-link">Sport</a>
-                        <a href="#" class="tag-cloud-link">Tech</a>
-                        <a href="#" class="tag-cloud-link">Travel</a>
-                        <a href="#" class="tag-cloud-link">Life</a>
-                        <a href="#" class="tag-cloud-link">Sport</a>
-                        <a href="#" class="tag-cloud-link">Tech</a>
-                        <a href="#" class="tag-cloud-link">Travel</a>
-                    </div>
-                </div>
-
                 <div class="sidebar-box ftco-animate">
                     <h3>Paragraph</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>

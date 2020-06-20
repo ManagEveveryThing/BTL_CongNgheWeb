@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = null;
+}
+@model DemoLyThuyet.Models.Cau1_Account
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <span>Status: @ViewBag.data</span>
+    <br />
+    <label>User: </label><input disabled type="text" value="@Model.user"/>
+    <br />
+    <label>Pass: </label><input disabled type="text" value="@Model.pass"/>
+</body>
+</html>
